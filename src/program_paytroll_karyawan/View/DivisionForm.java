@@ -337,15 +337,11 @@ public class DivisionForm extends javax.swing.JPanel {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
         controller.insert();
-
-        this.moveToTable();
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
         controller.edit();
-
-        this.moveToTable();
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void addNavButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNavButtonActionPerformed

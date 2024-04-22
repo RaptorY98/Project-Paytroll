@@ -128,7 +128,7 @@ public class DepartementController {
         int row = panel.getTabel().getSelectedRow();
         
         if (row != -1){
-            int id = Integer.valueOf(list.get(row).getLocation_id());
+            int id = Integer.valueOf(list.get(row).getDepartement_id());
             int col = panel.getTabel().getSelectedColumn();
             
             if(col == 4){
@@ -159,7 +159,7 @@ public class DepartementController {
     public void delete(int id){
         int res = JOptionPane.showConfirmDialog(null, "Yakin pengen di hapus ?","Warning",JOptionPane.YES_NO_OPTION);
         
-        if(res == JOptionPane.YES_OPTION){
+        if(res == JOptionPane.YES_OPTION){            
             dao.delete(id);
             JOptionPane.showMessageDialog(null,"Data Berhasil Dihapus");
             this.isiTable();
@@ -176,7 +176,7 @@ public class DepartementController {
         }
         return res;
     }
-     public String validateMessage(int seq,String text){
+    public String validateMessage(int seq,String text){
         if(seq == 1){
             return "Field "+text+" Wajib Diisi";
         }else{

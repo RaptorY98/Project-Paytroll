@@ -165,5 +165,34 @@ public class DivisionDAO implements ImplementDivision {
             return null;
         }
     }
+
+    @Override
+    public List<DivisionModel> getDataByDepartementId(int id) {
+        list = new ArrayList<DivisionModel>();
+        
+        try {
+            
+            Statement statement = DbConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM division WHERE departement_id='"+id+"'");
+            
+            while (result.next()) { 
+                DivisionModel model = new DivisionModel();
+                DepartementModel modelDepartement = departementDao.getDetail(result.getInt("departement_id"));
+                model.setDivision_id(result.getInt("division_id"));
+                model.setDepartement_id(result.getInt("departement_id"));
+                model.setDepartement(modelDepartement);
+                model.setName(result.getString("name"));
+                model.setNotes(result.getString("notes"));
+                list.add(model);
+            }
+            
+            statement.close();
+            result.close();
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartementDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
     
 }

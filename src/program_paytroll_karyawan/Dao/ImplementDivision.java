@@ -24,4 +24,6 @@ public interface ImplementDivision {
     public List<DivisionModel> getAllData();
     
     public DivisionModel getDetail(int id);
+    
+    public List<DivisionModel> getDataByDepartementId(int id);
 }

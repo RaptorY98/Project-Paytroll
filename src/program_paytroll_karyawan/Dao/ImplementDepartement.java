@@ -24,5 +24,7 @@ public interface ImplementDepartement {
     public List<DepartementModel> getAllData();
     
     public DepartementModel getDetail(int id);
-
+    
+    public List<DepartementModel> getAllByLocationId(int id);
+    
 }

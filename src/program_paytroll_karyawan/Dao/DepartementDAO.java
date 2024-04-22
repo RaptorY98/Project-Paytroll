@@ -75,7 +75,6 @@ public class DepartementDAO implements ImplementDepartement{
             statement.setInt(1, id);
             
             statement.executeUpdate();
-            
             statement.close();
         } catch (SQLException ex) {
             Logger.getLogger(LocationDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -165,6 +164,35 @@ public class DepartementDAO implements ImplementDepartement{
             return null;
         }
     
+    }
+
+    @Override
+    public List<DepartementModel> getAllByLocationId(int id) {
+        list = new ArrayList<DepartementModel>();
+        
+        try {
+            
+            Statement statement = DbConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM departement WHERE location_id='"+id+"'");
+            
+            while (result.next()) { 
+                DepartementModel model = new DepartementModel();
+                LocationModel modelLocation = locationController.getLocationDetail(result.getInt("location_id"));
+                model.setDepartement_id(result.getInt("departement_id"));
+                model.setLocation_id(result.getInt("location_id"));
+                model.setLocation(modelLocation);
+                model.setName(result.getString("name"));
+                model.setNotes(result.getString("notes"));
+                list.add(model);
+            }
+            
+            statement.close();
+            result.close();
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartementDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
    
 }
