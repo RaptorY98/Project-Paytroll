@@ -358,19 +358,11 @@ public class DepartementForm extends javax.swing.JPanel {
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
         controller.edit();
-        controller.isiTable();
-        controller.reset();
-
-        this.moveToTable();
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
         controller.insert();
-        controller.isiTable();
-        controller.reset();
-
-        this.moveToTable();
     }//GEN-LAST:event_saveButtonActionPerformed
 
 
