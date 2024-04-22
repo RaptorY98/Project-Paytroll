@@ -33,7 +33,9 @@ public class LoginController {
     public void authUser(){
         LoginModel loginModel = new LoginModel();
         loginModel.setUsername(panel.getUsername().getText());
-        loginModel.setPassword(panel.getPassword().getText());
+        String password = implementLogin.encryptPassword(panel.getPassword().getText());
+        
+        loginModel.setPassword(password);
         String Response = implementLogin.authUser(loginModel);
         if(Response.equals("Success")){
             new MainMenu_Utama(loginModel).setVisible(true);

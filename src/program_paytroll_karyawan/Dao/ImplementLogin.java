@@ -13,4 +13,6 @@ import program_paytroll_karyawan.Model.LoginModel;
  */
 public interface ImplementLogin {
     public String authUser(LoginModel loginModel);
+    
+    public String encryptPassword(String password);
 }

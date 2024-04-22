@@ -5,6 +5,8 @@
  */
 package program_paytroll_karyawan.Dao;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -47,6 +49,30 @@ public class LoginDAO implements ImplementLogin{
             System.out.println(e.getMessage());
         }
         return "Failed";
+        
+    }
+
+    @Override
+    public String encryptPassword(String password) {
+        try {
+            //retrieve instance of the encryptor of SHA-256
+            MessageDigest digestor = MessageDigest.getInstance("SHA-256");
+            //retrieve bytes to encrypt
+            byte[] encodedhash = digestor.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder encryptionValue = new StringBuilder(2 * encodedhash.length);
+            //perform encryption
+            for (int i = 0; i < encodedhash.length; i++) {
+                String hexVal = Integer.toHexString(0xff & encodedhash[i]);
+                if (hexVal.length() == 1) {
+                    encryptionValue.append('0');
+                }
+                encryptionValue.append(hexVal);
+            }
+            //return encrypted value
+            return encryptionValue.toString();
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
         
     }
     
