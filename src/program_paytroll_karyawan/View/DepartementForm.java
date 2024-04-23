@@ -19,7 +19,7 @@ import program_paytroll_karyawan.Model.LoginModel;
  * @author lincbp
  */
 public class DepartementForm extends javax.swing.JPanel {
-    private DepartementController controller;
+    private DepartementController controller; 
     /**
      * Creates new form LocationForm
      */

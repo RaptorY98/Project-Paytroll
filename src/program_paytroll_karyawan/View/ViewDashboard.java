@@ -26,6 +26,10 @@ public class ViewDashboard extends javax.swing.JPanel {
         namaTxt.setText(displayName);
         nikTxt.setText(loginModel.getNik());
         
+        pnAbsen.add(new AbsenPanel(loginModel));
+        pnAbsen.repaint();
+        pnAbsen.revalidate();
+        
         getTime();
     }
     public void getTime(){
@@ -36,6 +40,10 @@ public class ViewDashboard extends javax.swing.JPanel {
                 timeTxt.setText(new SimpleDateFormat("dd-MM-yyyy hh:mm:ss").format(new java.util.Date()));
             }
         },0,1000);
+    }
+    
+    public void initAbsen(){
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +58,9 @@ public class ViewDashboard extends javax.swing.JPanel {
         namaTxt = new javax.swing.JLabel();
         nikTxt = new javax.swing.JLabel();
         timeTxt = new javax.swing.JLabel();
+        pnAbsen = new javax.swing.JPanel();
+        pnAbsen1 = new javax.swing.JPanel();
+        pnAbsen2 = new javax.swing.JPanel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -69,6 +80,35 @@ public class ViewDashboard extends javax.swing.JPanel {
         timeTxt.setText("jLabel2");
         timeTxt.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        pnAbsen.setBackground(new java.awt.Color(255, 102, 102));
+        pnAbsen.setLayout(new java.awt.BorderLayout());
+
+        pnAbsen1.setBackground(new java.awt.Color(0, 255, 0));
+
+        javax.swing.GroupLayout pnAbsen1Layout = new javax.swing.GroupLayout(pnAbsen1);
+        pnAbsen1.setLayout(pnAbsen1Layout);
+        pnAbsen1Layout.setHorizontalGroup(
+            pnAbsen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 271, Short.MAX_VALUE)
+        );
+        pnAbsen1Layout.setVerticalGroup(
+            pnAbsen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 141, Short.MAX_VALUE)
+        );
+
+        pnAbsen2.setBackground(new java.awt.Color(0, 204, 153));
+
+        javax.swing.GroupLayout pnAbsen2Layout = new javax.swing.GroupLayout(pnAbsen2);
+        pnAbsen2.setLayout(pnAbsen2Layout);
+        pnAbsen2Layout.setHorizontalGroup(
+            pnAbsen2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 271, Short.MAX_VALUE)
+        );
+        pnAbsen2Layout.setVerticalGroup(
+            pnAbsen2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 141, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,8 +120,16 @@ public class ViewDashboard extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(nikTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 372, Short.MAX_VALUE)
-                        .addComponent(timeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(timeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(pnAbsen, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnAbsen1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnAbsen2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -95,7 +143,12 @@ public class ViewDashboard extends javax.swing.JPanel {
                 .addComponent(namaTxt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nikTxt)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnAbsen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnAbsen1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnAbsen2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -104,6 +157,9 @@ public class ViewDashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel namaTxt;
     private javax.swing.JLabel nikTxt;
+    private javax.swing.JPanel pnAbsen;
+    private javax.swing.JPanel pnAbsen1;
+    private javax.swing.JPanel pnAbsen2;
     private javax.swing.JLabel timeTxt;
     // End of variables declaration//GEN-END:variables
 }

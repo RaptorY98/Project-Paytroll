@@ -1,0 +1,120 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package program_paytroll_karyawan.Dao;
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import program_paytroll_karyawan.Config.DbConnection;
+import program_paytroll_karyawan.Model.AbsensiModel;
+
+/**
+ *
+ * @author lincbp
+ */
+public class AbsensiDAO implements ImplementAbsen {
+    private List<AbsensiModel> list;
+    private final KaryawanDAO daoKaryawan = new KaryawanDAO();
+    
+    private final String DATE_FORMAT = "yyyy-MM-dd H:m:s";
+    private final SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+    private final SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+
+    @Override
+    public AbsensiModel getCurrentAbsen(Date absenDate,int EmployeId) {
+        System.out.println(absenDate);
+        try {
+            
+            Statement statement = DbConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM absensi WHERE absensi_date='"+absenDate+"' AND employe_id='"+EmployeId+"' LIMIT 1");
+            
+            if(result.next()){
+                AbsensiModel model = new AbsensiModel();
+                model.setAbsensi_id(result.getInt("absensi_id"));
+                model.setEmploye_id(result.getInt("employe_id"));
+                model.setAbsensi_date(result.getDate("absensi_date"));
+                
+                java.util.Date dateIn = null;
+                String inTxt = result.getString("check_in");
+                
+                if(inTxt != null){
+                    try{
+                        dateIn = sdf.parse(inTxt);
+                    }catch(Exception e){
+                        System.err.println(e.getMessage());
+                    }
+                }
+                java.util.Date dateOut = null;
+                String outTxt = result.getString("check_out");
+                if(outTxt != null){
+                    try{
+                        dateOut = sdf.parse(outTxt);
+                    }catch(Exception e){
+                        System.err.println(e.getMessage());
+                    }
+                }
+                
+                model.setIn(dateIn);
+                model.setOut(dateOut);
+                
+                
+                model.setEmploye(daoKaryawan.getDetail(result.getInt("employe_id")));
+                return model;
+            }
+            
+            statement.close();
+            result.close();
+            
+            return null;
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartementDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
+    public void checkIn(int employe_id) {
+        try {
+            PreparedStatement statement = DbConnection.getConnection().prepareStatement("INSERT INTO absensi (absensi_id, employe_id, absensi_date, check_in) VALUES (null, ?, ?, ?)");
+            java.util.Date currentDate = new java.util.Date();
+            statement.setInt(1, employe_id);
+            statement.setString(2, sdf2.format(currentDate));
+            statement.setString(3, sdf.format(currentDate));
+            statement.executeUpdate();
+          
+          
+            statement.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(LocationDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void checkOut(int absensi_id) {
+        try {
+            PreparedStatement statement = DbConnection.getConnection().prepareStatement("UPDATE absensi SET check_out=? WHERE absensi_id=?");
+            java.util.Date currentDate = new java.util.Date();
+            statement.setString(1, sdf.format(currentDate));
+            statement.setInt(2, absensi_id);
+            statement.executeUpdate();
+          
+          
+            statement.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(LocationDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+}
