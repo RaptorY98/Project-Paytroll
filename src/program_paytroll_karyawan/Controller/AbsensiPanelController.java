@@ -34,7 +34,7 @@ public class AbsensiPanelController {
     
     public void initAbsensi(){
         int id = panel.getCurrentLogin().getEmploye_id();
-        modelAbsen = dao.getCurrentAbsen(java.sql.Date.valueOf(sdf.format(new Date())), id);
+        modelAbsen = dao.getCurrentAbsen(id);
         
         if(modelAbsen == null){
             System.out.println("Masook");

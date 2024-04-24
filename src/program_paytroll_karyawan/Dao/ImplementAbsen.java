@@ -6,6 +6,7 @@
 package program_paytroll_karyawan.Dao;
 
 import java.sql.Date;
+import java.util.List;
 import program_paytroll_karyawan.Model.AbsensiModel;
 
 /**
@@ -13,9 +14,13 @@ import program_paytroll_karyawan.Model.AbsensiModel;
  * @author lincbp
  */
 public interface ImplementAbsen {
-    public AbsensiModel getCurrentAbsen(Date absenDate,int EmployeId);
+    public AbsensiModel getCurrentAbsen(int EmployeId);
     
     public void checkIn(int employe_id);
     
     public void checkOut(int absensi_id);
+    
+    public List<AbsensiModel> getAbsensi();
+    
+    public List<AbsensiModel> getAbsensiSearch(String fromDate,String toDate, int employe_id);
 }

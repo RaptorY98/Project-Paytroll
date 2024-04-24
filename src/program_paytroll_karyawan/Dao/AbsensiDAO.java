@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,12 +32,11 @@ public class AbsensiDAO implements ImplementAbsen {
     private final SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
-    public AbsensiModel getCurrentAbsen(Date absenDate,int EmployeId) {
-        System.out.println(absenDate);
+    public AbsensiModel getCurrentAbsen(int EmployeId) {
         try {
             
             Statement statement = DbConnection.getConnection().createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM absensi WHERE absensi_date='"+absenDate+"' AND employe_id='"+EmployeId+"' LIMIT 1");
+            ResultSet result = statement.executeQuery("SELECT * FROM absensi WHERE employe_id='"+EmployeId+"' AND check_out IS NULL   LIMIT 1");
             
             if(result.next()){
                 AbsensiModel model = new AbsensiModel();
@@ -116,5 +116,109 @@ public class AbsensiDAO implements ImplementAbsen {
             Logger.getLogger(LocationDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    public List<AbsensiModel> getAbsensi() {
+        list = new ArrayList<AbsensiModel>();
+        try {
+            
+            Statement statement = DbConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM absensi");
+            
+            while (result.next()) { 
+                AbsensiModel model = new AbsensiModel();
+                model.setAbsensi_id(result.getInt("absensi_id"));
+                model.setEmploye(daoKaryawan.getDetail(result.getInt("employe_id")));
+                model.setAbsensi_date(result.getDate("absensi_date"));                
+                java.util.Date dateIn = null;
+                String inTxt = result.getString("check_in");
+                
+                if(inTxt != null){
+                    try{
+                        dateIn = sdf.parse(inTxt);
+                    }catch(Exception e){
+                        System.err.println(e.getMessage());
+                    }
+                }
+                java.util.Date dateOut = null;
+                String outTxt = result.getString("check_out");
+                if(outTxt != null){
+                    try{
+                        dateOut = sdf.parse(outTxt);
+                    }catch(Exception e){
+                        System.err.println(e.getMessage());
+                    }
+                }
+                
+                model.setIn(dateIn);
+                model.setOut(dateOut);
+                list.add(model);
+            }
+            
+            statement.close();
+            result.close();
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartementDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
+    public List<AbsensiModel> getAbsensiSearch(String fromDate, String toDate, int employe_id) {
+        list = new ArrayList<AbsensiModel>();
+        String sqlWhere1 = "";
+        String sqlWhere2 = "";
+        if(fromDate == null || toDate == null || !fromDate.equals("") || !toDate.equals("")){
+            sqlWhere1 = " AND absensi_date BETWEEN '"+fromDate+"' AND '"+toDate+"'";
+        }
+        if(employe_id != 0){
+            sqlWhere2 = " AND employe_id = '"+employe_id+"'";
+        }
+        try {
+            System.out.println("SELECT * FROM absensi WHERE 1=1 "+sqlWhere1+sqlWhere2);
+            Statement statement = DbConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM absensi WHERE 1=1 "+sqlWhere1+sqlWhere2);
+            
+            while (result.next()) { 
+                AbsensiModel model = new AbsensiModel();
+                model.setAbsensi_id(result.getInt("absensi_id"));
+                model.setEmploye(daoKaryawan.getDetail(result.getInt("employe_id")));
+                model.setAbsensi_date(result.getDate("absensi_date"));                
+                java.util.Date dateIn = null;
+                String inTxt = result.getString("check_in");
+                
+                if(inTxt != null){
+                    try{
+                        dateIn = sdf.parse(inTxt);
+                    }catch(Exception e){
+                        System.err.println(e.getMessage());
+                    }
+                }
+                java.util.Date dateOut = null;
+                String outTxt = result.getString("check_out");
+                if(outTxt != null){
+                    try{
+                        dateOut = sdf.parse(outTxt);
+                    }catch(Exception e){
+                        System.err.println(e.getMessage());
+                    }
+                }
+                
+                model.setIn(dateIn);
+                model.setOut(dateOut);
+                list.add(model);
+            }
+            
+            statement.close();
+            result.close();
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartementDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+    }
+    
     
 }

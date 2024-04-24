@@ -5,6 +5,7 @@
  */
 package program_paytroll_karyawan.View;
 
+import javax.swing.JFrame;
 import program_paytroll_karyawan.Model.LoginModel;
 
 /**
@@ -19,7 +20,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
     public MainMenu_Utama(LoginModel model) {
         loginModel = model;
         initComponents();
-        
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         pn_utama.add(new ViewDashboard(loginModel));
         pn_utama.repaint();
         pn_utama.revalidate();
@@ -44,22 +45,6 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        pn_DataPegawai = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        pn_AbsensiPegawai = new javax.swing.JPanel();
-        jPanel16 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        pn_Account = new javax.swing.JPanel();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        pn_DataLembur = new javax.swing.JPanel();
-        jPanel20 = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         pn_Profil = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -85,6 +70,8 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         navDepartement = new javax.swing.JButton();
         navLocation2 = new javax.swing.JButton();
         navLocation3 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        navLocation4 = new javax.swing.JButton();
         pn_kanan = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         pn_dasar = new javax.swing.JPanel();
@@ -157,194 +144,6 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(153, 153, 153));
         jLabel13.setText("Report");
-
-        pn_DataPegawai.setBackground(new java.awt.Color(250, 250, 250));
-
-        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 86, Short.MAX_VALUE)
-        );
-
-        jLabel6.setForeground(new java.awt.Color(153, 255, 255));
-        jLabel6.setText("Icon");
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel7.setText("Data Pegawai");
-
-        javax.swing.GroupLayout pn_DataPegawaiLayout = new javax.swing.GroupLayout(pn_DataPegawai);
-        pn_DataPegawai.setLayout(pn_DataPegawaiLayout);
-        pn_DataPegawaiLayout.setHorizontalGroup(
-            pn_DataPegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_DataPegawaiLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pn_DataPegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pn_DataPegawaiLayout.createSequentialGroup()
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 281, Short.MAX_VALUE)))
-        );
-        pn_DataPegawaiLayout.setVerticalGroup(
-            pn_DataPegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_DataPegawaiLayout.createSequentialGroup()
-                .addGroup(pn_DataPegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pn_DataPegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pn_AbsensiPegawai.setBackground(new java.awt.Color(250, 250, 250));
-
-        jPanel16.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 86, Short.MAX_VALUE)
-        );
-
-        jLabel18.setForeground(new java.awt.Color(153, 255, 255));
-        jLabel18.setText("Icon");
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel19.setText("Absensi Pegawai");
-
-        javax.swing.GroupLayout pn_AbsensiPegawaiLayout = new javax.swing.GroupLayout(pn_AbsensiPegawai);
-        pn_AbsensiPegawai.setLayout(pn_AbsensiPegawaiLayout);
-        pn_AbsensiPegawaiLayout.setHorizontalGroup(
-            pn_AbsensiPegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_AbsensiPegawaiLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(jLabel19)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pn_AbsensiPegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pn_AbsensiPegawaiLayout.createSequentialGroup()
-                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 374, Short.MAX_VALUE)))
-        );
-        pn_AbsensiPegawaiLayout.setVerticalGroup(
-            pn_AbsensiPegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_AbsensiPegawaiLayout.createSequentialGroup()
-                .addGroup(pn_AbsensiPegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pn_AbsensiPegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pn_Account.setBackground(new java.awt.Color(250, 250, 250));
-
-        jPanel18.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 86, Short.MAX_VALUE)
-        );
-
-        jLabel20.setForeground(new java.awt.Color(153, 255, 255));
-        jLabel20.setText("Icon");
-
-        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel21.setText("Account/User");
-
-        javax.swing.GroupLayout pn_AccountLayout = new javax.swing.GroupLayout(pn_Account);
-        pn_Account.setLayout(pn_AccountLayout);
-        pn_AccountLayout.setHorizontalGroup(
-            pn_AccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_AccountLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(jLabel21)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pn_AccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pn_AccountLayout.createSequentialGroup()
-                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 374, Short.MAX_VALUE)))
-        );
-        pn_AccountLayout.setVerticalGroup(
-            pn_AccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_AccountLayout.createSequentialGroup()
-                .addGroup(pn_AccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pn_AccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pn_DataLembur.setBackground(new java.awt.Color(250, 250, 250));
-
-        jPanel20.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
-        jPanel20.setLayout(jPanel20Layout);
-        jPanel20Layout.setHorizontalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        jPanel20Layout.setVerticalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 86, Short.MAX_VALUE)
-        );
-
-        jLabel22.setForeground(new java.awt.Color(153, 255, 255));
-        jLabel22.setText("Icon");
-
-        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel23.setText("Data Lembur");
-
-        javax.swing.GroupLayout pn_DataLemburLayout = new javax.swing.GroupLayout(pn_DataLembur);
-        pn_DataLembur.setLayout(pn_DataLemburLayout);
-        pn_DataLemburLayout.setHorizontalGroup(
-            pn_DataLemburLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_DataLemburLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(jLabel23)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pn_DataLemburLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pn_DataLemburLayout.createSequentialGroup()
-                    .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 374, Short.MAX_VALUE)))
-        );
-        pn_DataLemburLayout.setVerticalGroup(
-            pn_DataLemburLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_DataLemburLayout.createSequentialGroup()
-                .addGroup(pn_DataLemburLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pn_DataLemburLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         pn_Profil.setBackground(new java.awt.Color(250, 250, 250));
 
@@ -636,6 +435,21 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel4.setText("Transaksi");
+
+        navLocation4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/Clock_1.png"))); // NOI18N
+        navLocation4.setText("Daftar Absensi");
+        navLocation4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        navLocation4.setMinimumSize(new java.awt.Dimension(189, 59));
+        navLocation4.setPreferredSize(new java.awt.Dimension(189, 59));
+        navLocation4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navLocation4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_kiriLayout = new javax.swing.GroupLayout(pn_kiri);
         pn_kiri.setLayout(pn_kiriLayout);
         pn_kiriLayout.setHorizontalGroup(
@@ -659,21 +473,19 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                                         .addComponent(jLabel2)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(45, 45, 45))
-                    .addComponent(pn_DataLembur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pn_Account, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pn_AbsensiPegawai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pn_kiriLayout.createSequentialGroup()
                         .addGroup(pn_kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
                             .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pn_DataPegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addGroup(pn_kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(navHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                                 .addComponent(navLocation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(navDepartement, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(navLocation2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(navLocation3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(navLocation3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(navLocation4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel4))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         pn_kiriLayout.setVerticalGroup(
@@ -695,15 +507,11 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 .addComponent(navLocation2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navLocation3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pn_DataPegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pn_AbsensiPegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pn_Account, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(pn_DataLembur, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(140, 140, 140)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navLocation4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(414, 414, 414)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pn_Profil, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -770,7 +578,6 @@ public class MainMenu_Utama extends javax.swing.JFrame {
 
     private void navLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocationActionPerformed
         // TODO add your handling code here:
-        System.out.println(loginModel.getEmploye_id());
         pn_utama.removeAll();
         pn_utama.add(new LocationForm(loginModel));
         pn_utama.repaint();
@@ -803,11 +610,19 @@ public class MainMenu_Utama extends javax.swing.JFrame {
 
     private void navLocation3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocation3ActionPerformed
         // TODO add your handling code here:
-         pn_utama.removeAll();
+        pn_utama.removeAll();
         pn_utama.add(new KaryawanForm(loginModel));
         pn_utama.repaint();
         pn_utama.revalidate();
     }//GEN-LAST:event_navLocation3ActionPerformed
+
+    private void navLocation4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocation4ActionPerformed
+        // TODO add your handling code here:
+        pn_utama.removeAll();
+        pn_utama.add(new ListAbsensi(loginModel));
+        pn_utama.repaint();
+        pn_utama.revalidate();
+    }//GEN-LAST:event_navLocation4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -854,20 +669,13 @@ public class MainMenu_Utama extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -876,25 +684,18 @@ public class MainMenu_Utama extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JButton navDepartement;
     private javax.swing.JButton navHome;
     private javax.swing.JButton navLocation;
     private javax.swing.JButton navLocation2;
     private javax.swing.JButton navLocation3;
+    private javax.swing.JButton navLocation4;
     private javax.swing.JPanel pn_Absensi;
-    private javax.swing.JPanel pn_AbsensiPegawai;
-    private javax.swing.JPanel pn_Account;
     private javax.swing.JPanel pn_AddRemimburst;
-    private javax.swing.JPanel pn_DataLembur;
-    private javax.swing.JPanel pn_DataPegawai;
     private javax.swing.JPanel pn_Profil;
     private javax.swing.JPanel pn_dasar;
     private javax.swing.JPanel pn_kanan;
