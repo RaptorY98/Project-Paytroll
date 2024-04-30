@@ -53,9 +53,9 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         navLocation3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         navLocation4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         pn_kanan = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -259,6 +259,10 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("Transaksi");
 
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel13.setText("Report");
+
         navLocation4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         navLocation4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/schedule.png"))); // NOI18N
         navLocation4.setText("Daftar Absensi");
@@ -280,10 +284,6 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel13.setText("Report");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -456,6 +456,10 @@ public class MainMenu_Utama extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        pn_utama.removeAll();
+        pn_utama.add(new Reimburse(loginModel));
+        pn_utama.repaint();
+        pn_utama.revalidate();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
