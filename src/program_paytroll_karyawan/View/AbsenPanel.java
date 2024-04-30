@@ -63,6 +63,8 @@ public class AbsenPanel extends javax.swing.JPanel {
         btnCheckIn = new javax.swing.JButton();
         btnCheckOut = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Check In : ");
 
