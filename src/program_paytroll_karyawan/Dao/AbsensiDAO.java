@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -219,6 +220,52 @@ public class AbsensiDAO implements ImplementAbsen {
         }
         
     }
+
+    public AbsensiModel getAbsensiById(int id) {
+        try {
+            
+            Statement statement = DbConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM absensi WHERE absensi_id='"+id+"' and check_out IS NOT NULL limit 1");
+            AbsensiModel model = new AbsensiModel();
+            while (result.next()) { 
+                model.setAbsensi_id(result.getInt("absensi_id"));
+                model.setEmploye(daoKaryawan.getDetail(result.getInt("employe_id")));
+                model.setAbsensi_date(result.getDate("absensi_date"));
+                
+                java.util.Date dateIn = null;
+                String inTxt = result.getString("check_in");
+                
+                if(inTxt != null){
+                    try{
+                        dateIn = sdf.parse(inTxt);
+                    }catch(ParseException e){
+                        System.err.println(e.getMessage());
+                    }
+                }
+                
+                java.util.Date dateOut = null;
+                String outTxt = result.getString("check_out");
+                if(outTxt != null){
+                    try{
+                        dateOut = sdf.parse(outTxt);
+                    }catch(ParseException e){
+                        System.err.println(e.getMessage());
+                    }
+                }
+                
+                model.setIn(dateIn);
+                model.setOut(dateOut);
+            }
+            
+            statement.close();
+            result.close();
+            return model;
+        } catch (SQLException ex) {
+            Logger.getLogger(LocationDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
     
     
 }

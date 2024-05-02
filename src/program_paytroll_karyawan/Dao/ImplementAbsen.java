@@ -23,4 +23,6 @@ public interface ImplementAbsen {
     public List<AbsensiModel> getAbsensi();
     
     public List<AbsensiModel> getAbsensiSearch(String fromDate,String toDate, int employe_id);
+    
+    public AbsensiModel getAbsensiById(int id);
 }

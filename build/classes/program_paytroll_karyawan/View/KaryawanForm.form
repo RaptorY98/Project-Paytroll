@@ -256,14 +256,16 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="dateOfBirthTxt" max="32767" attributes="0"/>
                                   <Component id="employeNameTxt" alignment="0" max="32767" attributes="0"/>
                                   <Component id="idTxt" alignment="1" max="32767" attributes="0"/>
                                   <Component id="nikTxt" alignment="0" max="32767" attributes="0"/>
                                   <Component id="usernameTxt" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
+                                  <Component id="passwordTxt" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="idDisplay" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -272,9 +274,8 @@
                                           <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="243" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="247" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="passwordTxt" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -293,7 +294,9 @@
                               <Component id="employeNameTxt" min="-2" pref="35" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="dateOfBirthTxt" min="-2" pref="27" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="nikTxt" min="-2" pref="35" max="-2" attributes="0"/>
@@ -305,7 +308,7 @@
                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="passwordTxt" min="-2" pref="36" max="-2" attributes="0"/>
-                              <EmptySpace pref="192" max="32767" attributes="0"/>
+                              <EmptySpace pref="203" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -398,6 +401,8 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JPasswordField" name="passwordTxt">
+                    </Component>
+                    <Component class="com.toedter.calendar.JDateChooser" name="dateOfBirthTxt">
                     </Component>
                   </SubComponents>
                 </Container>

@@ -161,6 +161,7 @@ public class KaryawanForm extends javax.swing.JPanel {
         usernameTxt = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         passwordTxt = new javax.swing.JPasswordField();
+        dateOfBirthTxt = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -327,14 +328,16 @@ public class KaryawanForm extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(employeNameTxt)
-                    .addComponent(idTxt, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nikTxt)
-                    .addComponent(usernameTxt)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dateOfBirthTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(employeNameTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(idTxt)
+                    .addComponent(nikTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(usernameTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passwordTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(idDisplay)
                             .addComponent(jLabel16)
@@ -342,8 +345,7 @@ public class KaryawanForm extends javax.swing.JPanel {
                             .addComponent(jLabel12)
                             .addComponent(jLabel13)
                             .addComponent(jLabel14))
-                        .addGap(0, 243, Short.MAX_VALUE))
-                    .addComponent(passwordTxt))
+                        .addGap(0, 247, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -359,7 +361,9 @@ public class KaryawanForm extends javax.swing.JPanel {
                 .addComponent(employeNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(49, 49, 49)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dateOfBirthTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nikTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -371,7 +375,7 @@ public class KaryawanForm extends javax.swing.JPanel {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel5);
@@ -619,6 +623,7 @@ public class KaryawanForm extends javax.swing.JPanel {
     private javax.swing.JButton backNavButton1;
     private javax.swing.JPanel cardLayout;
     private javax.swing.JTable dataTable;
+    private com.toedter.calendar.JDateChooser dateOfBirthTxt;
     private javax.swing.JComboBox<String> departementCombo;
     private javax.swing.JComboBox<String> divisionCombo;
     private javax.swing.JButton editButton;

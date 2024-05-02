@@ -56,6 +56,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         navLocation4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        navLocation5 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         pn_kanan = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -149,7 +150,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -250,7 +251,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 .addComponent(navLocation2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navLocation3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -285,6 +286,18 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             }
         });
 
+        navLocation5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        navLocation5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/schedule.png"))); // NOI18N
+        navLocation5.setText("Lembur");
+        navLocation5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        navLocation5.setMinimumSize(new java.awt.Dimension(189, 59));
+        navLocation5.setPreferredSize(new java.awt.Dimension(189, 59));
+        navLocation5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navLocation5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -298,7 +311,8 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel13))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navLocation5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -308,10 +322,12 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navLocation4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navLocation5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -462,6 +478,14 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         pn_utama.revalidate();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void navLocation5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocation5ActionPerformed
+        // TODO add your handling code here:
+         pn_utama.removeAll();
+        pn_utama.add(new lemburForm(loginModel));
+        pn_utama.repaint();
+        pn_utama.revalidate();
+    }//GEN-LAST:event_navLocation5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -521,6 +545,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
     private javax.swing.JButton navLocation2;
     private javax.swing.JButton navLocation3;
     private javax.swing.JButton navLocation4;
+    private javax.swing.JButton navLocation5;
     private javax.swing.JPanel pn_dasar;
     private javax.swing.JPanel pn_kanan;
     private javax.swing.JPanel pn_kiri;
