@@ -8,6 +8,7 @@ package program_paytroll_karyawan.View;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -592,7 +593,7 @@ public class KaryawanForm extends javax.swing.JPanel {
         // TODO add your handling code here:
         // Only Accept Integer Value        
         char enter = evt.getKeyChar();
-        if(!(Character.isDigit(enter))){
+        if(!(Character.isDigit(enter) || enter == KeyEvent.VK_PERIOD || enter == KeyEvent.VK_PERIOD)){
             evt.consume();
         }
     }//GEN-LAST:event_salaryTxtKeyTyped

@@ -176,6 +176,8 @@ public class LemburController {
             this.reset();
             this.initLembur();
             panel.moveToTable();
+        }else{
+            JOptionPane.showMessageDialog(null,res);
         }
         System.out.println(res);
     }

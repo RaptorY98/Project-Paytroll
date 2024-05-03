@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import program_paytroll_karyawan.Config.DbConnection;
 import program_paytroll_karyawan.Model.LoginModel;
 
@@ -46,7 +47,7 @@ public class LoginDAO implements ImplementLogin{
             }
             conn.close();
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
         return "Failed";
         

@@ -473,7 +473,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         pn_utama.removeAll();
-        pn_utama.add(new Reimburse(loginModel));
+        pn_utama.add(new ReimburseForm(loginModel));
         pn_utama.repaint();
         pn_utama.revalidate();
     }//GEN-LAST:event_jButton1ActionPerformed
