@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="feb4ffcf-dfcc-4a5f-8c4e-b8e8c76aab1d">
+	<property name="ireport.zoom" value="2.8531167061100033"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     employe.`employe_name` AS employe_employe_name,
+     employe.`nik` AS employe_nik,
+     absensi.`absensi_date` AS absensi_absensi_date,
+     absensi.`check_in` AS absensi_check_in,
+     absensi.`check_out` AS absensi_check_out
+FROM
+     `employe` employe INNER JOIN `absensi` absensi ON employe.`employe_id` = absensi.`employe_id`]]>
+	</queryString>
+	<field name="employe_nik" class="java.lang.String"/>
+	<field name="employe_employe_name" class="java.lang.String"/>
+	<field name="absensi_absensi_date" class="java.sql.Date"/>
+	<field name="absensi_check_in" class="java.sql.Timestamp"/>
+	<field name="absensi_check_out" class="java.sql.Timestamp"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement uuid="41d4ac02-9b78-4d58-86e5-9a8da6ddc93f" mode="Opaque" x="-20" y="-20" width="843" height="92" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="4cc9fe75-ab2e-4f2e-bbb8-bbc715964e18" x="0" y="0" width="547" height="43" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[LAPORAN ABSENSI KARYAWAN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="594efc08-e8fb-422e-8609-ae2f31c9f136" x="10" y="43" width="220" height="20" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PT. MAGNUS SEDAYA SELARAS]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22">
+			<line>
+				<reportElement uuid="e4ce72e3-e320-4560-8839-6a93e51a6012" x="0" y="20" width="802" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="aba72482-7115-44cf-b716-7c33b55557ed" mode="Opaque" x="0" y="0" width="170" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Karyawan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8631d8c5-9556-41e1-b828-585b6c97de6b" mode="Opaque" x="319" y="0" width="166" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3825e4c3-9747-41f1-a600-60179c3e5f35" mode="Opaque" x="485" y="0" width="156" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Check In]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="969cb113-50a5-4796-897c-6983aca95499" mode="Opaque" x="641" y="0" width="161" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Check Out]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3e8de4d9-3003-4010-ac23-626c6d9238a8" mode="Opaque" x="170" y="0" width="149" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Karyawan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26">
+			<line>
+				<reportElement uuid="5eeb6185-c037-42eb-8b15-1e678df7e2c7" positionType="FixRelativeToBottom" x="0" y="20" width="802" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="fe7b352e-0d55-4ccb-bd2d-bc4baa6d0b55" x="0" y="0" width="170" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employe_nik}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="77094d55-cfe5-4558-be11-39f2ebb554c2" x="319" y="0" width="166" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{absensi_absensi_date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="e135415d-6afa-487a-9bf0-1d1b89fed6e8" x="485" y="1" width="156" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{absensi_check_in}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="1537b358-9f30-4273-90a9-89fd27a92639" x="641" y="0" width="161" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{absensi_check_out}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="7a5d8e44-192e-46fe-a3eb-c1a281312626" x="170" y="0" width="149" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employe_employe_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="c7429bb1-d9e1-401c-a88f-9d0838513d19" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="5097e536-96c9-49ef-bd78-0868e5720d0d" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="a2667306-dbbe-43ad-9779-3a43bb0e1783" x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
