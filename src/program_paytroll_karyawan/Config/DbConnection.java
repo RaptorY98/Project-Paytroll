@@ -19,12 +19,12 @@ public class DbConnection {
     
     public static Connection getConnection(){
         try{
-//            String URI = "jdbc:mysql://66.94.122.11/rifkialf_payroll_java";
-//            String user = "rifkialf_payroll_java";
-//            String password = "JMqx28EX";
-            String URI = "jdbc:mysql://localhost/payroll_java";
-            String user = "root";
-            String password = "";
+            String URI = "jdbc:mysql://66.94.122.11/rifkialf_payroll_java";
+            String user = "rifkialf_payroll_java";
+            String password = "JMqx28EX";
+//            String URI = "jdbc:mysql://localhost/payroll_java";
+//            String user = "root";
+//            String password = "";
             
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             
