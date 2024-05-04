@@ -37,7 +37,7 @@ public class AbsensiDAO implements ImplementAbsen {
         try {
             
             Statement statement = DbConnection.getConnection().createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM absensi WHERE employe_id='"+EmployeId+"' AND check_out IS NULL   LIMIT 1");
+            ResultSet result = statement.executeQuery("SELECT * FROM absensi WHERE employe_id='"+EmployeId+"' AND (check_out IS NULL OR DATE(absensi_date) = DATE(NOW()))  LIMIT 1");
             
             if(result.next()){
                 AbsensiModel model = new AbsensiModel();

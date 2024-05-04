@@ -53,7 +53,7 @@ public class AbsensiPanelController {
             }
             if(modelAbsen.getOut() != null){
                 panel.getTxtCheckOut().setText(sdf2.format(modelAbsen.getOut()));
-                panel.getCheckOutButton().setEnabled(false);
+                panel.getCheckOutButton().setEnabled(true);
             }else{
                 panel.getTxtCheckOut().setText("");
                 panel.getCheckOutButton().setEnabled(true);

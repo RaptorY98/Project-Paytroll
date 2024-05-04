@@ -24,4 +24,6 @@ public interface ImplementReimburse {
 
     public void deleteReimbursmentHeader(int id);
     public void deleteReimbursmentDetail(int id);
+    
+    public ReimbursmentModel getDetailReimbusment(int id);
 }

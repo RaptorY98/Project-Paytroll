@@ -188,5 +188,36 @@ public class ReimbursmentDAO implements ImplementReimburse{
             Logger.getLogger(LocationDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    public ReimbursmentModel getDetailReimbusment(int id) {
+        try {
+            
+            Statement statement = DbConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM reimbursment WHERE reimbursment_id='"+id+"' limit 1");
+            
+            ReimbursmentModel model = new ReimbursmentModel();
+
+            if(result.next()) { 
+                model.setEmploye_id(result.getInt("employe_id"));
+                model.setReimbursment_no(result.getString("reimbursment_no"));
+                model.setReimbursment_id(result.getInt("reimbursment_id"));
+                model.setRequest_from(result.getInt("request_from"));
+                model.setCreated_at(result.getTimestamp("created_at"));
+                model.setCreated_by(result.getString("created_by"));
+                model.setEmployeDetail(karyawanDao.getDetail(result.getInt("employe_id")));
+                model.setRequestDetail(karyawanDao.getDetail(result.getInt("request_from")));
+                model.setDetail(getReimbursmentDetail(result.getInt("reimbursment_id")));
+            }
+            
+            statement.close();
+            result.close();
+            
+            return model;
+        } catch (SQLException ex) {
+            Logger.getLogger(ReimbursmentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
     
 }

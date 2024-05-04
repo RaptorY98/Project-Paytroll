@@ -5,6 +5,7 @@
  */
 package program_paytroll_karyawan.View;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -74,6 +75,14 @@ public class ReimburseForm extends javax.swing.JPanel {
         return dataTable;
     }
     
+    public JButton getSaveButton(){
+        return SaveBt;
+    }
+    
+    public JTextField getSearch(){
+        return searchTxt;
+    }
+    
     public ReimburseForm(LoginModel loginModel) {
         initComponents();
         this.loginData = loginModel;
@@ -97,7 +106,7 @@ public class ReimburseForm extends javax.swing.JPanel {
 
         cardLayout = new javax.swing.JPanel();
         masterPanel = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        searchTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -116,7 +125,6 @@ public class ReimburseForm extends javax.swing.JPanel {
         noReimburseTxt = new javax.swing.JTextField();
         karyawanCombo = new javax.swing.JComboBox<>();
         SaveBt = new javax.swing.JButton();
-        CancelBt = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         btnAddDetail = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -127,18 +135,18 @@ public class ReimburseForm extends javax.swing.JPanel {
         cardLayout.setBackground(new java.awt.Color(255, 255, 255));
         cardLayout.setLayout(new java.awt.CardLayout());
 
-        jTextField1.setText("Search");
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        searchTxt.setText("Search");
+        searchTxt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                searchTxtFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                searchTxtFocusLost(evt);
             }
         });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        searchTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                searchTxtActionPerformed(evt);
             }
         });
 
@@ -157,6 +165,11 @@ public class ReimburseForm extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/money.png"))); // NOI18N
 
         jButton2.setText("Cari");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -190,7 +203,7 @@ public class ReimburseForm extends javax.swing.JPanel {
                             .addGroup(masterPanelLayout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(searchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2))
                             .addGroup(masterPanelLayout.createSequentialGroup()
@@ -214,7 +227,7 @@ public class ReimburseForm extends javax.swing.JPanel {
                 .addGroup(masterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
@@ -291,8 +304,6 @@ public class ReimburseForm extends javax.swing.JPanel {
             }
         });
 
-        CancelBt.setText("Cancel");
-
         jLabel11.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setText("Detail Reimburse");
@@ -324,20 +335,11 @@ public class ReimburseForm extends javax.swing.JPanel {
             .addGroup(FormReimburseLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(FormReimburseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(noReimburseTxt)
-                    .addComponent(idTxt)
                     .addGroup(FormReimburseLayout.createSequentialGroup()
                         .addGroup(FormReimburseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(idDisplay)
                             .addComponent(jLabel6))
-                        .addGap(211, 593, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FormReimburseLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(SaveBt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CancelBt))
-                    .addComponent(karyawanCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(603, Short.MAX_VALUE))
                     .addGroup(FormReimburseLayout.createSequentialGroup()
                         .addGroup(FormReimburseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
@@ -345,7 +347,17 @@ public class ReimburseForm extends javax.swing.JPanel {
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnAddDetail)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(FormReimburseLayout.createSequentialGroup()
+                        .addGroup(FormReimburseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addComponent(noReimburseTxt)
+                            .addComponent(idTxt)
+                            .addComponent(karyawanCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FormReimburseLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(SaveBt)
                 .addContainerGap())
         );
         FormReimburseLayout.setVerticalGroup(
@@ -370,9 +382,7 @@ public class ReimburseForm extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FormReimburseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CancelBt)
-                    .addComponent(SaveBt))
+                .addComponent(SaveBt)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -411,9 +421,9 @@ public class ReimburseForm extends javax.swing.JPanel {
         add(cardLayout, "card3");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void searchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_searchTxtActionPerformed
 
     private void idTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTxtActionPerformed
         // TODO add your handling code here:
@@ -475,30 +485,34 @@ public class ReimburseForm extends javax.swing.JPanel {
         controller.insert();
     }//GEN-LAST:event_SaveBtActionPerformed
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+    private void searchTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTxtFocusGained
         // TODO add your handling code here:
-        String text = jTextField1.getText();
+        String text = searchTxt.getText();
         if(text.equals("Search")){
-            jTextField1.setText("");
+            searchTxt.setText("");
         }
-    }//GEN-LAST:event_jTextField1FocusGained
+    }//GEN-LAST:event_searchTxtFocusGained
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+    private void searchTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTxtFocusLost
         // TODO add your handling code here:
-          String text = jTextField1.getText();
+          String text = searchTxt.getText();
         if(text.equals("")){
-            jTextField1.setText("Search");
+            searchTxt.setText("Search");
         }
-    }//GEN-LAST:event_jTextField1FocusLost
+    }//GEN-LAST:event_searchTxtFocusLost
 
     private void dataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableMouseClicked
         // TODO add your handling code here:
         controller.selectedRow();
     }//GEN-LAST:event_dataTableMouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        controller.search();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CancelBt;
     private javax.swing.JPanel FormReimburse;
     private javax.swing.JButton SaveBt;
     private javax.swing.JButton btnAddDetail;
@@ -519,10 +533,10 @@ public class ReimburseForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> karyawanCombo;
     private javax.swing.JPanel masterPanel;
     private javax.swing.JTextField noReimburseTxt;
+    private javax.swing.JTextField searchTxt;
     private javax.swing.JTable tableDetail;
     // End of variables declaration//GEN-END:variables
 }

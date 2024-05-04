@@ -41,6 +41,7 @@ public class ReimbursmentController {
         dao = new ReimbursmentDAO();
     }
     
+    
     public void initTable(){
         list = dao.getReimbursment();
         
@@ -76,6 +77,10 @@ public class ReimbursmentController {
         panel.getKaryawanCombo().setSelectedIndex(0);
         listDetail = new ArrayList<ReimbursmentDetailModel>();
         initDetail();
+        panel.getNoReimburse().setEnabled(true);
+        panel.getKaryawanCombo().setEnabled(true);
+        panel.getTable().setEnabled(true);
+        panel.getSaveButton().setVisible(true);
     }
     
     public void selectedRowDetail(){
@@ -189,8 +194,25 @@ public class ReimbursmentController {
             this.initTable();
         }
     }
-    public void detail(int id){
-        ReimbursmentModel model = new ReimbursmentModel();
+    
+    public void search(){
+        String search = panel.getSearch().getText();
+        list = dao.getReimbursmentSearch(search);
+        
+        this.applyTable(list);
+    }
+    
+    public void detail(ReimbursmentModel model){
+        panel.moveToForm();
+        panel.getNoReimburse().setText(model.getReimbursment_no());
+        panel.getNoReimburse().setEnabled(false);
+        panel.getKaryawanCombo().getModel().setSelectedItem(new ComboBoxModel(model.getEmployeDetail().getEmploye_name(), String.valueOf(model.getEmployeDetail().getEmploye_id())));
+        panel.getKaryawanCombo().setEnabled(false);
+        listDetail = model.getDetail();
+        panel.getTable().setEnabled(false);
+        this.initDetail();
+        panel.getSaveButton().setVisible(false);
+        
     }
     
     public void selectedRow(){
@@ -201,7 +223,7 @@ public class ReimbursmentController {
             int col = panel.getTable().getSelectedColumn();
             
             if(col == 5){
-                this.detail(id);
+                this.detail(list.get(row));
             }
             if(col == 6){
                 this.delete(id);
