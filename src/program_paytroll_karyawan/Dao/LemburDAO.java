@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import program_paytroll_karyawan.Config.DbConnection;
+import program_paytroll_karyawan.Model.CustomLemburModel;
 import program_paytroll_karyawan.Model.LemburModel;
 import program_paytroll_karyawan.Model.LocationModel;
 
@@ -24,6 +25,7 @@ import program_paytroll_karyawan.Model.LocationModel;
  */
 public class LemburDAO implements ImplementLembur{
     private List<LemburModel> list;
+    private List<CustomLemburModel> list2;
     private final KaryawanDAO daoKaryawan = new KaryawanDAO();
     private final AbsensiDAO daoAbsensi = new AbsensiDAO();
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd H:m:s");
@@ -180,6 +182,119 @@ public class LemburDAO implements ImplementLembur{
             return list;
         } catch (SQLException ex) {
             Logger.getLogger(DepartementDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    
+    @Override
+    public List<CustomLemburModel> getCustomLembur() {
+        list2 = new ArrayList<CustomLemburModel>();
+        try {
+            
+            Statement statement = DbConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT MONTHNAME(a.absensi_date) AS nameMonth, a.employe_id AS employe_id, COUNT(l.lembur_id) AS total_lembur FROM lembur l LEFT JOIN absensi a ON l.absensi_id = a.absensi_id GROUP BY nameMonth,employe_id");
+            
+            while (result.next()) { 
+                CustomLemburModel model = new CustomLemburModel();
+                model.setNameMonth(result.getString("nameMonth"));
+                model.setEmploye_id(result.getInt("employe_id"));
+                model.setTotal_lembur(result.getInt("total_lembur"));
+                model.setEmployeDetail(daoKaryawan.getDetail(result.getInt("employe_id")));
+                list2.add(model);
+            }
+            
+            statement.close();
+            result.close();
+            return list2;
+        } catch (SQLException ex) {
+            Logger.getLogger(LocationDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
+    public List<CustomLemburModel> getCustomLemburSearch(int employeId, String fromDate, String endDate) {
+        list2 = new ArrayList<CustomLemburModel>();
+        String sqlWhere1 = "";
+        String sqlWhere2 = "";
+        if(fromDate == null || endDate == null || !fromDate.equals("") || !endDate.equals("")){
+            sqlWhere1 = " AND a.absensi_date BETWEEN '"+fromDate+"' AND '"+endDate+"'";
+        }
+        if(employeId != 0){
+            sqlWhere2 = " AND a.employe_id = '"+employeId+"'";
+        }
+        try {
+            Statement statement = DbConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT MONTHNAME(a.absensi_date) AS nameMonth, a.employe_id AS employe_id, COUNT(l.lembur_id) AS total_lembur FROM lembur l LEFT JOIN absensi a ON l.absensi_id = a.absensi_id WHERE 1=1 "+sqlWhere1+sqlWhere2+" GROUP BY nameMonth,employe_id");
+            
+            while (result.next()) { 
+                CustomLemburModel model = new CustomLemburModel();
+                model.setNameMonth(result.getString("nameMonth"));
+                model.setEmploye_id(result.getInt("employe_id"));
+                model.setTotal_lembur(result.getInt("total_lembur"));
+                model.setEmployeDetail(daoKaryawan.getDetail(result.getInt("employe_id")));
+                list2.add(model);
+            }
+            
+            statement.close();
+            result.close();
+            return list2;
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartementDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
+    public List<LemburModel> getDataByMonth(String monthName) {
+        list = new ArrayList<LemburModel>();
+        try {
+            
+            Statement statement = DbConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM lembur l LEFT JOIN absensi a ON l.absensi_id = a.absensi_id WHERE MONTHNAME(a.absensi_date) = '"+monthName+"'");
+            
+            while (result.next()) { 
+                LemburModel model = new LemburModel();
+                model.setLembur_id(result.getInt("lembur_id"));
+                model.setAbsensi_id(result.getInt("absensi_id"));
+                model.setRequest_from(result.getInt("request_from"));
+                model.setCreated_at(result.getTimestamp("created_at"));
+                model.setCreated_by(result.getString("created_by"));
+                
+                model.setAbsen(daoAbsensi.getAbsensiById(result.getInt("absensi_id")));
+                model.setRequest_employe(daoKaryawan.getDetail(result.getInt("request_from")));
+                java.util.Date startDate = null;
+                
+                String inTxt = result.getString("start_date");
+                if(inTxt != null){
+                    try{
+                        startDate = sdf.parse(inTxt);
+                    }catch(Exception e){
+                        System.err.println(e.getMessage());
+                    }
+                }
+                
+                java.util.Date dateOut = null;
+                String outTxt = result.getString("end_date");
+                if(outTxt != null){
+                    try{
+                        dateOut = sdf.parse(outTxt);
+                    }catch(Exception e){
+                        System.err.println(e.getMessage());
+                    }
+                }
+                
+                model.setStartDate(startDate);
+                model.setEndDate(dateOut);
+                list.add(model);
+            }
+            
+            statement.close();
+            result.close();
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(LocationDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

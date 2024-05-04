@@ -71,6 +71,9 @@ public class lemburForm extends javax.swing.JPanel {
         return DTPEnd;
     }
     
+    public JTable getDetailTable(){
+        return dataTable1;
+    }
     
     public void moveToForm(){
         cardLayout.removeAll();
@@ -88,6 +91,16 @@ public class lemburForm extends javax.swing.JPanel {
         cardLayout.revalidate();
         
         cardLayout.add(masterPanel);
+        cardLayout.repaint();
+        cardLayout.revalidate();
+    }
+    
+    public void moveToDetail(){
+        cardLayout.removeAll();
+        cardLayout.repaint();
+        cardLayout.revalidate();
+        
+        cardLayout.add(detailPanel);
         cardLayout.repaint();
         cardLayout.revalidate();
     }
@@ -127,6 +140,11 @@ public class lemburForm extends javax.swing.JPanel {
         DTPStart = new com.github.lgooddatepicker.components.DateTimePicker();
         DTPEnd = new com.github.lgooddatepicker.components.DateTimePicker();
         btnSave = new javax.swing.JButton();
+        detailPanel = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        dataTable1 = new javax.swing.JTable();
+        backNavButton1 = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -371,6 +389,63 @@ public class lemburForm extends javax.swing.JPanel {
 
         cardLayout.add(formPanel, "card3");
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel10.setText("Data Detail Lembur");
+
+        dataTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        dataTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dataTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(dataTable1);
+
+        backNavButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/Back.png"))); // NOI18N
+        backNavButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backNavButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout detailPanelLayout = new javax.swing.GroupLayout(detailPanel);
+        detailPanel.setLayout(detailPanelLayout);
+        detailPanelLayout.setHorizontalGroup(
+            detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detailPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(detailPanelLayout.createSequentialGroup()
+                        .addComponent(backNavButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel10)
+                        .addGap(0, 365, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        detailPanelLayout.setVerticalGroup(
+            detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detailPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backNavButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        cardLayout.add(detailPanel, "card4");
+
         add(cardLayout, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
@@ -434,21 +509,35 @@ public class lemburForm extends javax.swing.JPanel {
         controller.initLembur();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void dataTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTable1MouseClicked
+        // TODO add your handling code here:
+        controller.selectedRowDetail();
+    }//GEN-LAST:event_dataTable1MouseClicked
+
+    private void backNavButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backNavButton1ActionPerformed
+        // TODO add your handling code here:
+        this.moveToTable();
+    }//GEN-LAST:event_backNavButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.github.lgooddatepicker.components.DateTimePicker DTPEnd;
     private com.github.lgooddatepicker.components.DateTimePicker DTPStart;
     private javax.swing.JButton addNavButton;
     private javax.swing.JButton backNavButton;
+    private javax.swing.JButton backNavButton1;
     private javax.swing.JButton btnSave;
     private javax.swing.JPanel cardLayout;
     private javax.swing.JComboBox<String> cbEmployeList;
     private javax.swing.JTable dataTable;
+    private javax.swing.JTable dataTable1;
+    private javax.swing.JPanel detailPanel;
     private com.toedter.calendar.JDateChooser endDate;
     private javax.swing.JPanel formPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -459,6 +548,7 @@ public class lemburForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private com.toedter.calendar.JDateChooser jdcTanggalLembur;
     private javax.swing.JComboBox<String> karyawanCombo;
     private javax.swing.JPanel masterPanel;

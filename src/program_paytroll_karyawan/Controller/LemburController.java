@@ -22,11 +22,13 @@ import program_paytroll_karyawan.Dao.KaryawanDAO;
 import program_paytroll_karyawan.Dao.LemburDAO;
 import program_paytroll_karyawan.Model.AbsensiModel;
 import program_paytroll_karyawan.Model.ComboBoxModel;
+import program_paytroll_karyawan.Model.CustomLemburModel;
 import program_paytroll_karyawan.Model.KaryawanModel;
 import program_paytroll_karyawan.Model.LemburModel;
 import program_paytroll_karyawan.Table.ButtonColumn;
 import program_paytroll_karyawan.Table.TableKaryawan;
 import program_paytroll_karyawan.Table.TableLembur;
+import program_paytroll_karyawan.Table.TableLemburCustom;
 
 /**
  *
@@ -35,10 +37,12 @@ import program_paytroll_karyawan.Table.TableLembur;
 public class LemburController {
     private final lemburForm panel;
     private List<LemburModel> list;
+    private List<CustomLemburModel> listCustom;
     private final ImplementLembur dao;
     private List<KaryawanModel> listKaryawan;
     private List<AbsensiModel> listAbsensi = null;
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    private CustomLemburModel currentLembur;
     
     private AbsensiModel selectedAbsensi = null;
     
@@ -60,8 +64,10 @@ public class LemburController {
         panel.getEmployeCombo().setModel(comboModel);
     }
     public void initLembur(){
-        list = dao.getData();
-        this.applyTable(list);
+//        list = dao.getData();
+//        this.applyTable(list);
+        listCustom = dao.getCustomLembur();
+        this.applyTableCustom(listCustom);
     }
     public void employeChanged(){
         Object selectedLocation = panel.getEmployeCombo().getSelectedItem();
@@ -134,9 +140,16 @@ public class LemburController {
     }
     
     public void applyTable(List<LemburModel> list){
-        panel.getTable().setModel(new TableLembur(list));
+        panel.getDetailTable().setModel(new TableLembur(list));
         
-        ButtonColumn buttonColumn2 = new ButtonColumn(panel.getTable(), null, 8);
+        ButtonColumn buttonColumn2 = new ButtonColumn(panel.getDetailTable(), null, 8);
+        buttonColumn2.setMnemonic(KeyEvent.VK_E);
+    }
+    
+    public void applyTableCustom(List<CustomLemburModel> list){
+        panel.getTable().setModel(new TableLemburCustom(list));
+        
+        ButtonColumn buttonColumn2 = new ButtonColumn(panel.getTable(), null, 5);
         buttonColumn2.setMnemonic(KeyEvent.VK_E);
     }
     
@@ -254,20 +267,32 @@ public class LemburController {
     
     public void selectedRow(){
         int row = panel.getTable().getSelectedRow();
-        
+        System.out.println(row);
+        if (row != -1){
+            int col = panel.getTable().getSelectedColumn();
+            
+            if(col == 5){
+                this.detail(listCustom.get(row));
+                currentLembur = listCustom.get(row);
+
+            }            
+        }   
+    }
+    public void selectedRowDetail(){
+        int row = panel.getDetailTable().getSelectedRow();
         if (row != -1){
             int id = Integer.valueOf(list.get(row).getLembur_id());
-            int col = panel.getTable().getSelectedColumn();
+            int col = panel.getDetailTable().getSelectedColumn();
             
             if(col == 8){
                 this.delete(id);
-            }
-            
+            } 
             
             System.out.println("Table Selected Row :"+row+" Col :"+col+" Id :"+id);
-            
-        }  
+        } 
     }
+    
+ 
     
     public void delete(int id){
         int res = JOptionPane.showConfirmDialog(null, "Yakin pengen di hapus ?","Warning",JOptionPane.YES_NO_OPTION);
@@ -276,6 +301,7 @@ public class LemburController {
             dao.delete(id);
             JOptionPane.showMessageDialog(null,"Data Berhasil Dihapus");
             this.initLembur();
+            this.detail(currentLembur);
         }
     }
     
@@ -295,7 +321,13 @@ public class LemburController {
             toDate = sdf.format(panel.getFilterEnd().getDate());
         }
         
-        list = dao.getDataSearch(employe_id,fromDate, toDate);
+        listCustom = dao.getCustomLemburSearch(employe_id,fromDate, toDate);
+        this.applyTableCustom(listCustom);
+    }
+   
+    public void detail(CustomLemburModel model){
+        list = dao.getDataByMonth(model.getNameMonth());
         this.applyTable(list);
+        panel.moveToDetail();
     }
 }

@@ -46,11 +46,12 @@ public class Form_Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        loginBtn = new javax.swing.JButton();
+        cancelBtn = new javax.swing.JButton();
         passwordField = new javax.swing.JPasswordField();
         usernameField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        loginBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -64,13 +65,14 @@ public class Form_Login extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Welcome");
 
-        loginBtn.setBackground(new java.awt.Color(0, 255, 255));
-        loginBtn.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
-        loginBtn.setText("LOGIN");
-        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+        cancelBtn.setBackground(new java.awt.Color(204, 0, 0));
+        cancelBtn.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
+        cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
+        cancelBtn.setText("CANCEL");
+        cancelBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginBtnActionPerformed(evt);
+                cancelBtnActionPerformed(evt);
             }
         });
 
@@ -112,13 +114,28 @@ public class Form_Login extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Username");
 
+        loginBtn.setBackground(new java.awt.Color(0, 255, 255));
+        loginBtn.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
+        loginBtn.setText("LOGIN");
+        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
+        loginBtn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginBtnKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel5)
@@ -126,7 +143,9 @@ public class Form_Login extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -143,8 +162,10 @@ public class Form_Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
@@ -201,10 +222,10 @@ public class Form_Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
-        loginController.authUser();
-    }//GEN-LAST:event_loginBtnActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void usernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusGained
         // TODO add your handling code here:
@@ -248,6 +269,15 @@ public class Form_Login extends javax.swing.JFrame {
            loginController.authUser();
         }
     }//GEN-LAST:event_passwordFieldKeyPressed
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+        loginController.authUser();
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void loginBtnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginBtnKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginBtnKeyPressed
                                       
     
     /**
@@ -286,6 +316,7 @@ public class Form_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
