@@ -63,7 +63,6 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         btnReportLembur = new javax.swing.JButton();
         btnReportAbsensi = new javax.swing.JButton();
-        btnRepostReimburse = new javax.swing.JButton();
         btnSlipGaji = new javax.swing.JButton();
         btnReportDataKaryawan = new javax.swing.JButton();
         pn_kanan = new javax.swing.JPanel();
@@ -361,12 +360,8 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             }
         });
 
-        btnRepostReimburse.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        btnRepostReimburse.setText("Laporan Reimburse");
-        btnRepostReimburse.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
         btnSlipGaji.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        btnSlipGaji.setText("Slip Gaji");
+        btnSlipGaji.setText("Laporan Gaji Karyawan");
         btnSlipGaji.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSlipGaji.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -395,7 +390,6 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                         .addComponent(jLabel13)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btnReportAbsensi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRepostReimburse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSlipGaji, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnReportDataKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
                 .addContainerGap())
@@ -408,8 +402,6 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 .addComponent(btnReportAbsensi, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReportLembur, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRepostReimburse, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReportDataKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -435,8 +427,8 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(39, 39, 39))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel5);
@@ -684,7 +676,6 @@ public class MainMenu_Utama extends javax.swing.JFrame {
     private javax.swing.JButton btnReportAbsensi;
     private javax.swing.JButton btnReportDataKaryawan;
     private javax.swing.JButton btnReportLembur;
-    private javax.swing.JButton btnRepostReimburse;
     private javax.swing.JButton btnSlipGaji;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton6;

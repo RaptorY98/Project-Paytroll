@@ -5,13 +5,20 @@
  */
 package program_paytroll_karyawan.View;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import program_paytroll_karyawan.Config.DbConnection;
 import program_paytroll_karyawan.Model.LoginModel;
 
@@ -103,6 +110,21 @@ public class reportKaryawan extends javax.swing.JPanel {
         showData(null);
     //    tableModelKarya.getDataVector().removeAllElements();
      }
+     
+     private void printReport() {
+        try {
+            HashMap<String, Object> parameters = new HashMap<>();
+            parameters.put("searchData", txtSearch.getText());
+            
+            File file = new File("src/Report/laporanKaryawan.jasper");
+            JasperReport jr = (JasperReport) JRLoader.loadObject(file);
+            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, DbConnection.getConnection());
+            JasperViewer.viewReport(jp, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,6 +173,11 @@ public class reportKaryawan extends javax.swing.JPanel {
         });
 
         jButtonPrint1.setText("Print");
+        jButtonPrint1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrint1ActionPerformed(evt);
+            }
+        });
 
         jTableKaryawan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -228,6 +255,11 @@ public class reportKaryawan extends javax.swing.JPanel {
         // TODO add your handling code here:
         searchKaryawan();
     }//GEN-LAST:event_jButtonCariActionPerformed
+
+    private void jButtonPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrint1ActionPerformed
+        // TODO add your handling code here:
+        printReport();
+    }//GEN-LAST:event_jButtonPrint1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -259,8 +259,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel6" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="86" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -562,7 +562,6 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="btnReportAbsensi" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnRepostReimburse" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnSlipGaji" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnReportDataKaryawan" alignment="0" pref="244" max="32767" attributes="0"/>
                               </Group>
@@ -578,8 +577,6 @@
                               <Component id="btnReportAbsensi" min="-2" pref="43" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnReportLembur" min="-2" pref="43" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnRepostReimburse" min="-2" pref="43" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnReportDataKaryawan" min="-2" pref="43" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -625,21 +622,12 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReportAbsensiActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnRepostReimburse">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="SansSerif" size="18" style="1"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Laporan Reimburse"/>
-                        <Property name="horizontalAlignment" type="int" value="2"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JButton" name="btnSlipGaji">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="18" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Slip Gaji"/>
+                        <Property name="text" type="java.lang.String" value="Laporan Gaji Karyawan"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                       </Properties>
                       <Events>
