@@ -135,6 +135,8 @@ public class ReimburseForm extends javax.swing.JPanel {
         cardLayout.setBackground(new java.awt.Color(255, 255, 255));
         cardLayout.setLayout(new java.awt.CardLayout());
 
+        masterPanel.setBackground(new java.awt.Color(255, 255, 255));
+
         searchTxt.setText("Search");
         searchTxt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -335,29 +337,23 @@ public class ReimburseForm extends javax.swing.JPanel {
             .addGroup(FormReimburseLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(FormReimburseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+                    .addComponent(noReimburseTxt)
+                    .addComponent(idTxt)
+                    .addComponent(karyawanCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(FormReimburseLayout.createSequentialGroup()
                         .addGroup(FormReimburseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(idDisplay)
-                            .addComponent(jLabel6))
-                        .addContainerGap(603, Short.MAX_VALUE))
-                    .addGroup(FormReimburseLayout.createSequentialGroup()
-                        .addGroup(FormReimburseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
                             .addComponent(jLabel10)
                             .addGroup(FormReimburseLayout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnAddDetail)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(FormReimburseLayout.createSequentialGroup()
-                        .addGroup(FormReimburseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addComponent(noReimburseTxt)
-                            .addComponent(idTxt)
-                            .addComponent(karyawanCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FormReimburseLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SaveBt)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FormReimburseLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(SaveBt)))
                 .addContainerGap())
         );
         FormReimburseLayout.setVerticalGroup(
@@ -383,7 +379,7 @@ public class ReimburseForm extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SaveBt)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout formPanelLayout = new javax.swing.GroupLayout(formPanel);

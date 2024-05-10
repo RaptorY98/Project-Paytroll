@@ -340,6 +340,8 @@ public class LocationForm extends javax.swing.JPanel {
 
         cardLayout.add(formPanel, "card2");
 
+        masterPanel.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Master Data > Location");
@@ -425,7 +427,7 @@ public class LocationForm extends javax.swing.JPanel {
                                     .addComponent(jButton1)))
                             .addComponent(addNavButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
 

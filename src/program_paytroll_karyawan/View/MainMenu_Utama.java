@@ -44,6 +44,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel5 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -60,11 +61,11 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         navLocation5 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        btnReportLembur = new javax.swing.JButton();
+        btnReportAbsensi = new javax.swing.JButton();
+        btnRepostReimburse = new javax.swing.JButton();
+        btnSlipGaji = new javax.swing.JButton();
+        btnReportDataKaryawan = new javax.swing.JButton();
         pn_kanan = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -161,6 +162,10 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel5.setText("Payroll Application 1.0");
+
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -237,7 +242,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(navHome, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                    .addComponent(navHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -338,21 +343,45 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(153, 153, 153));
         jLabel13.setText("Report");
 
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton2.setText("Laporan Lembur");
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportLembur.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnReportLembur.setText("Laporan Lembur");
+        btnReportLembur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportLembur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportLemburActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton3.setText("Laporan Absensi");
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportAbsensi.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnReportAbsensi.setText("Laporan Absensi");
+        btnReportAbsensi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportAbsensi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportAbsensiActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton4.setText("Laporan Reimburse");
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnRepostReimburse.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnRepostReimburse.setText("Laporan Reimburse");
+        btnRepostReimburse.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
-        jButton5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton5.setText("Slip Gaji");
-        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSlipGaji.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnSlipGaji.setText("Slip Gaji");
+        btnSlipGaji.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSlipGaji.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSlipGajiActionPerformed(evt);
+            }
+        });
+
+        btnReportDataKaryawan.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnReportDataKaryawan.setText("Laporan Data Karyawan");
+        btnReportDataKaryawan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportDataKaryawan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportDataKaryawanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -361,13 +390,14 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReportLembur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addGap(0, 173, Short.MAX_VALUE))
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnReportAbsensi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRepostReimburse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSlipGaji, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReportDataKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -375,19 +405,17 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnReportAbsensi, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnReportLembur, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRepostReimburse, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnReportDataKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSlipGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel5.setText("Payroll Application 1.0");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -399,10 +427,6 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,9 +436,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addContainerGap())
+                .addGap(39, 39, 39))
         );
 
         jScrollPane1.setViewportView(jPanel5);
@@ -423,10 +445,14 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         pn_kiri.setLayout(pn_kiriLayout);
         pn_kiriLayout.setHorizontalGroup(
             pn_kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(pn_kiriLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pn_kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pn_kiriLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
         );
         pn_kiriLayout.setVerticalGroup(
             pn_kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,7 +460,9 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 932, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
                 .addContainerGap())
         );
 
@@ -573,7 +601,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
 
     private void navLocation5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocation5ActionPerformed
         // TODO add your handling code here:
-         pn_utama.removeAll();
+        pn_utama.removeAll();
         pn_utama.add(new lemburForm(loginModel));
         pn_utama.repaint();
         pn_utama.revalidate();
@@ -584,6 +612,38 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         this.setVisible(false);
         new Form_Login().setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnReportAbsensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportAbsensiActionPerformed
+        // TODO add your handling code here:
+        pn_utama.removeAll();
+        pn_utama.add(new reportAbsensi(loginModel));
+        pn_utama.repaint();
+        pn_utama.revalidate();
+    }//GEN-LAST:event_btnReportAbsensiActionPerformed
+
+    private void btnReportLemburActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportLemburActionPerformed
+        // TODO add your handling code here:
+        pn_utama.removeAll();
+        pn_utama.add(new reportLembur(loginModel));
+        pn_utama.repaint();
+        pn_utama.revalidate();
+    }//GEN-LAST:event_btnReportLemburActionPerformed
+
+    private void btnReportDataKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportDataKaryawanActionPerformed
+        // TODO add your handling code here:
+        pn_utama.removeAll();
+        pn_utama.add(new reportKaryawan(loginModel));
+        pn_utama.repaint();
+        pn_utama.revalidate();
+    }//GEN-LAST:event_btnReportDataKaryawanActionPerformed
+
+    private void btnSlipGajiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSlipGajiActionPerformed
+        // TODO add your handling code here:
+        pn_utama.removeAll();
+        pn_utama.add(new slipGaji(loginModel));
+        pn_utama.repaint();
+        pn_utama.revalidate();
+    }//GEN-LAST:event_btnSlipGajiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -621,11 +681,12 @@ public class MainMenu_Utama extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReportAbsensi;
+    private javax.swing.JButton btnReportDataKaryawan;
+    private javax.swing.JButton btnReportLembur;
+    private javax.swing.JButton btnRepostReimburse;
+    private javax.swing.JButton btnSlipGaji;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
