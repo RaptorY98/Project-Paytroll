@@ -2,7 +2,7 @@
 <br/>
 <div align="center">
 <a href="https://github.com/ShaanCoding/ReadME-Generator">
-<img src="https://proceeding.unindra.ac.id/public/site/images/nickyrosadi/logo_unindra_3.png" alt="Logo" width="80" height="80">
+<img src="https://proceeding.unindra.ac.id/public/site/images/nickyrosadi/logo_unindra_3.png" alt="Logo" width="auto" height="100">
 </a>
 <h3 align="center">Payroll Java</h3>
 <p align="center">
