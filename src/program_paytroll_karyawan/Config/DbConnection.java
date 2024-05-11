@@ -18,7 +18,7 @@ public class DbConnection {
     private static Connection mysqlconfig;
     
     public static Connection getConnection(){
-        if(mysqlconfig == null){
+//        if(mysqlconfig == null){
             try{
     //            String URI = "jdbc:mysql://66.94.122.11/rifkialf_payroll_java";
     //            String user = "rifkialf_payroll_java";
@@ -33,7 +33,7 @@ public class DbConnection {
             }catch(Exception e){
                 System.err.println("Error Koneksi"+e.getMessage());
             }
-        }
+//        }
 
         
         return mysqlconfig;

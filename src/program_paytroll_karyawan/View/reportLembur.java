@@ -38,6 +38,7 @@ public class reportLembur extends javax.swing.JPanel {
     public reportLembur(LoginModel loginModel) {
         initComponents();
         initTable();
+        showData();
     }
 
     public String getMonthName(int id){
@@ -82,7 +83,7 @@ public class reportLembur extends javax.swing.JPanel {
     }
     
     private void showData() {
-        System.out.println(getMonthName(jMonthPeriode.getMonth()));
+        this.initTable();
         try {
             String sql = "SELECT e.employe_name AS employe_name,"
                     + "e.nik AS id_karyawan,"
@@ -117,6 +118,7 @@ public class reportLembur extends javax.swing.JPanel {
     private void clearData() {
         tableLembur.setRowCount(0);
         jMonthPeriode.getMonth();
+        showData();
     }
         
     private void printReport() {
@@ -270,6 +272,7 @@ public class reportLembur extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        showData();
         printReport();
     }//GEN-LAST:event_jButton1ActionPerformed
 

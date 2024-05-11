@@ -137,8 +137,8 @@ public class ReimbursmentController {
                 }
             }
             JOptionPane.showMessageDialog(null,"Data Berhasil Ditambah");
-//            this.reset();
-//            this.isiTable();
+            this.reset();
+            this.initTable();
             panel.moveToTable();
         }else{
             JOptionPane.showMessageDialog(null,res);

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0945f48e-d596-445b-8482-7a5297ca711d">
-	<property name="ireport.zoom" value="1.2100000000000015"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="306"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="searchData" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="searchCondition" class="java.lang.String">
+		<defaultValueExpression><![CDATA[ ]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT e.employe_id AS employe_id, e.nik, e.employe_name AS employe_name, e.salary AS salary, d.name AS department, di.name AS division, 
@@ -13,8 +16,8 @@ FROM employe e
 INNER JOIN division di ON e.division_id = di.division_id 
 INNER JOIN location l ON e.location_id = l.location_id 
 INNER JOIN departement d ON e.departement_id = d.departement_id
-WHERE e.nik LIKE $P{searchData} OR e.employe_name LIKE $P{searchData} OR e.salary LIKE $P{searchData}
-OR d.name LIKE $P{searchData} OR di.name LIKE $P{searchData} OR l.city LIKE $P{searchData} OR l.name LIKE $P{searchData}]]>
+
+$P{searchCondition}]]>
 	</queryString>
 	<field name="employe_id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -122,49 +125,49 @@ OR d.name LIKE $P{searchData} OR di.name LIKE $P{searchData} OR l.city LIKE $P{s
 			<line>
 				<reportElement uuid="f926f5a9-ef99-4231-9c38-529e428ecf53" positionType="FixRelativeToBottom" x="0" y="19" width="802" height="1"/>
 			</line>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="f93759a0-95ae-43ce-9907-97dd87027658" x="0" y="0" width="123" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nik}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="073fcd8f-3a93-49f1-a412-948cb535bee3" x="123" y="0" width="92" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{employe_name}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="3951e901-9306-4cc9-8a6e-80b678da6fd3" x="215" y="0" width="115" height="20"/>
 				<textElement textAlignment="Right">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Rp. " + new DecimalFormat("#,##0.00").format($F{salary})]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="3359eddc-539c-4447-a381-943a688e302d" x="330" y="0" width="119" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{department}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="52aa2c5a-d377-44eb-82b8-42c23297810c" x="449" y="0" width="121" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{division}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="b5132c4b-3735-4f99-8dcb-45e1a50f4e9e" x="670" y="0" width="132" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="316d3df3-9fca-4967-93a4-8346ecbe70f0" x="570" y="0" width="100" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="12"/>

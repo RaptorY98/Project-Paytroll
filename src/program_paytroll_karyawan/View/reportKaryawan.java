@@ -71,8 +71,6 @@ public class reportKaryawan extends javax.swing.JPanel {
                 sql += "WHERE e.nik LIKE '%"+searchText+"%' OR e.employe_name LIKE '%"+searchText+"%' OR e.salary LIKE '%"+searchText+"%' "
                         + "OR d.name LIKE '%"+searchText+"%' OR di.name LIKE '%"+searchText+"%' OR l.city LIKE '%"+searchText+"%' OR l.name LIKE '%"+searchText+"%'";
             }
-            System.out.println(sql);
-            System.out.println(searchText);
             PreparedStatement statement = DbConnection.getConnection().prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             
@@ -114,7 +112,13 @@ public class reportKaryawan extends javax.swing.JPanel {
      private void printReport() {
         try {
             HashMap<String, Object> parameters = new HashMap<>();
-            parameters.put("searchData", txtSearch.getText());
+            String whereCondition = "";
+            
+            if(!txtSearch.getText().equals("")){
+                String like = "'%"+txtSearch.getText()+"%'";
+                whereCondition = "WHERE e.nik LIKE "+like+" OR e.employe_name LIKE "+like+" OR e.salary LIKE "+like+" OR d.name LIKE "+like+" OR di.name LIKE "+like+" OR l.city LIKE "+like+" OR l.name LIKE "+like;
+            }
+            parameters.put("searchCondition",whereCondition );
             
             File file = new File("src/Report/laporanKaryawan.jasper");
             JasperReport jr = (JasperReport) JRLoader.loadObject(file);

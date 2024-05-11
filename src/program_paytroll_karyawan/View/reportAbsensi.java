@@ -32,7 +32,8 @@ import program_paytroll_karyawan.Model.LoginModel;
 public class reportAbsensi extends javax.swing.JPanel {
     
    // private Connection connection;
-    private DefaultTableModel tableModel; 
+    private DefaultTableModel tableModel;
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     /**
      * Creates new form reportAbsensi
      */
@@ -40,6 +41,7 @@ public class reportAbsensi extends javax.swing.JPanel {
         initComponents();
     //    connectToDatabase();
         initTable();
+        showData();
     }
 
    /* private void connectToDatabase() {
@@ -126,10 +128,14 @@ public class reportAbsensi extends javax.swing.JPanel {
             if(!(jDateTglEnd.getDate() == null)){
                 endDate = jDateTglEnd.getDate();
             }
+            String whereCondition = "";
             
-            
-            parameters.put("TglStart", startDate);
-            parameters.put("TglEnd", endDate);
+            if(startDate != null && endDate != null){
+                whereCondition += "WHERE a.absensi_date BETWEEN '"+sdf.format(startDate)+"' AND '"+sdf.format(endDate)+"'";
+            }
+            parameters.put("searchCondition", whereCondition);
+//            parameters.put("TglStart", startDate);
+//            parameters.put("TglEnd", endDate);
             
             File file = new File("src/Report/laporanAbsensi.jasper");
             JasperReport jr = (JasperReport) JRLoader.loadObject(file);
@@ -298,6 +304,7 @@ public class reportAbsensi extends javax.swing.JPanel {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
       clearData();
+      showData();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void jTableReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableReportMouseClicked
@@ -306,12 +313,8 @@ public class reportAbsensi extends javax.swing.JPanel {
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         // TODO add your handling code here:
-        if(jDateTglEnd.getDate() == null || jDateTglStart.getDate() == null){
-            JOptionPane.showMessageDialog(null, "Filter Date Empty !!");
-        }else{
             showData();
             printReport();
-        }
     }//GEN-LAST:event_btnPrintActionPerformed
 
 

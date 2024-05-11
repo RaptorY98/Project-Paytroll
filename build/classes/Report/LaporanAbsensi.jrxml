@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2670f283-faaf-44a1-bebb-f89b92650d01">
-	<property name="ireport.zoom" value="1.6105100000000172"/>
+	<property name="ireport.zoom" value="1.0000000000000104"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="TglStart" class="java.util.Date">
@@ -9,11 +9,15 @@
 	<parameter name="TglEnd" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="searchCondition" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT e.nik, e.employe_name, a.absensi_date, a.check_in, a.check_out
 FROM employe e
 INNER JOIN absensi a ON e.employe_id = a.employe_id
-WHERE a.absensi_date BETWEEN $P{TglStart} AND $P{TglEnd}]]>
+
+$P!{searchCondition}]]>
 	</queryString>
 	<field name="nik" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -101,35 +105,35 @@ WHERE a.absensi_date BETWEEN $P{TglStart} AND $P{TglEnd}]]>
 	</columnHeader>
 	<detail>
 		<band height="23">
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="80adb5a7-5f53-4975-90df-e18cab0d2b4e" x="0" y="0" width="158" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nik}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="2d6d479d-d662-4de3-92e6-13982c8ba27f" x="158" y="0" width="230" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{employe_name}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="5ee79aeb-d9c7-4a75-b69e-333da656898d" x="388" y="-1" width="127" height="21"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{absensi_date}.format("yyyy-MM-dd")]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="e2e96879-e952-447a-9f06-cf2f017d2c3b" x="652" y="0" width="150" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{check_out}.format("hh.mm")]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="6d6113ff-30ad-4c64-82e5-98790847d4ea" x="515" y="-1" width="137" height="21"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>

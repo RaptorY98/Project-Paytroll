@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="62d75d74-c994-485f-ab4b-fc9b124a2a7f">
 	<property name="ireport.zoom" value="1.4641000000000008"/>
-	<property name="ireport.x" value="291"/>
+	<property name="ireport.x" value="297"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="periodeBulan" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="seachCondition" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -102,35 +105,35 @@ GROUP BY nameMonth,employe_id]]>
 			<line>
 				<reportElement uuid="33776ce7-2415-4bbb-9d86-040cbd8ee4d9" positionType="FixRelativeToBottom" x="0" y="19" width="802" height="1"/>
 			</line>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="1c8dd459-91a6-4566-8e43-18a839151a3e" x="0" y="0" width="148" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{id_karyawan}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="32b40e97-8ff0-469c-b077-ee73444a7eb2" x="148" y="0" width="167" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{employe_name}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="bc77d60d-0217-4dae-9c7b-92f2d0bdb1ab" x="315" y="0" width="156" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nameMonth}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="99191301-d973-43ae-a30f-ac446647d43e" x="471" y="0" width="160" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total_lembur}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement uuid="a20b50aa-1e52-4c11-b563-b727b9a0b668" x="631" y="0" width="171" height="20"/>
 				<textElement textAlignment="Right">
 					<font size="14"/>
