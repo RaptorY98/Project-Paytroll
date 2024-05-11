@@ -122,7 +122,7 @@ public class reportLembur extends javax.swing.JPanel {
     private void printReport() {
         try {
             HashMap<String, Object> parameters = new HashMap<>();
-            parameters.put("periodeBulan", jMonthPeriode.getMonth());
+            parameters.put("periodeBulan", getMonthName(jMonthPeriode.getMonth()));
             
             File file = new File("src/Report/laporanLembur.jasper");
             JasperReport jr = (JasperReport) JRLoader.loadObject(file);

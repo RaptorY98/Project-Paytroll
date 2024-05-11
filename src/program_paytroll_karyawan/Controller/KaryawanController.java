@@ -145,7 +145,7 @@ public class KaryawanController {
                 listDivision = divisionController.getDataByDepartementId(departement_id);
 
                 for(DivisionModel item : listDivision){
-                    comboModel.addElement(new ComboBoxModel(item.getName(),String.valueOf(item.getDepartement_id())));
+                    comboModel.addElement(new ComboBoxModel(item.getName(),String.valueOf(item.getDivision_id())));
                 }
             }
         }
@@ -298,8 +298,6 @@ public class KaryawanController {
         panel.getUsername().setEditable(false);
         panel.getSalary().setText(String.valueOf(list.getSalary()));
         panel.getDob().setDate(list.getDate_of_birth());
-        System.out.println(list.getDate_of_birth());
-        System.out.println(panel.getDob().getDate());
         panel.getRole().getModel().setSelectedItem(new ComboBoxModel(CapitalizeFirstLetter(list.getRole()),list.getRole()));
         if(list.getIs_active() == 0){
             panel.getIsActive().getModel().setSelectedItem(new ComboBoxModel("Not Active","0"));
@@ -369,7 +367,12 @@ public class KaryawanController {
         if(panel.getDivisionCombo().getSelectedIndex() > 0 || !panel.getDivisionCombo().getSelectedItem().equals("")){
             Object selectedDivision = panel.getDivisionCombo().getSelectedItem();
             division_id = Integer.valueOf(((ComboBoxModel)selectedDivision).getValue());
+            System.out.println(((ComboBoxModel)selectedDivision).getKey()+"  "+((ComboBoxModel)selectedDivision).getValue());
         }
+        
+        System.out.println("Location :"+location_id);
+        System.out.println("Departement :"+departement_id);
+        System.out.println("Divisi :"+division_id);
         
         if(!isNullOrEmpty(panel.getSalary().getText())){
             salary = Double.valueOf(panel.getSalary().getText());
@@ -412,8 +415,6 @@ public class KaryawanController {
             if(!model.getPassword().equals("")){
                 System.out.println("update password");
                 dao.updatePassword(model.getPassword(), model.getEmploye_id());
-            }else{
-                System.out.println("kosong cuy pwnya");
             }
             JOptionPane.showMessageDialog(null,"Data Berhasil DiUbah");
             this.reset();

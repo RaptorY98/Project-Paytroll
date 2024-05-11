@@ -64,9 +64,16 @@ public class reportAbsensi extends javax.swing.JPanel {
     }
     
     private void showData() {
+        this.initTable();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String startDate = dateFormat.format(jDateTglStart.getDate());
-        String endDate = dateFormat.format(jDateTglEnd.getDate());
+            Date startDateTemp = null;
+            Date endDateTemp = null;
+            if(!(jDateTglStart.getDate() == null)){
+                startDateTemp = jDateTglStart.getDate();
+            }
+            if(!(jDateTglEnd.getDate() == null)){
+                endDateTemp = jDateTglEnd.getDate();
+            }
 
         try {
              String sql = "SELECT e.nik,\n" +
@@ -75,11 +82,15 @@ public class reportAbsensi extends javax.swing.JPanel {
                             "a.check_in,\n" +
                             "a.check_out\n" +
             "FROM employe e\n" +
-            "INNER JOIN absensi a ON e.employe_id = a.employe_id\n" +
-            "WHERE a.absensi_date BETWEEN ? AND ? ";
+            "INNER JOIN absensi a ON e.employe_id = a.employe_id\n";
+             
+             if(startDateTemp != null && endDateTemp != null){
+                String startDate = dateFormat.format(startDateTemp);
+                String endDate = dateFormat.format(endDateTemp);
+                 sql += "WHERE a.absensi_date BETWEEN '"+ startDate +"' AND '"+endDate+"'";
+             }
+             System.out.println(sql);
             PreparedStatement statement = DbConnection.getConnection().prepareStatement(sql);
-             statement.setString(1, startDate);
-            statement.setString(2, endDate);
             ResultSet resultSet = statement.executeQuery();
             
             while (resultSet.next()) {
@@ -107,8 +118,18 @@ public class reportAbsensi extends javax.swing.JPanel {
     private void printReport() {
         try {
             HashMap<String, Object> parameters = new HashMap<>();
-            parameters.put("TglStart", jDateTglStart.getDate());
-            parameters.put("TglEnd", jDateTglEnd.getDate());
+            Date startDate = null;
+            Date endDate = null;
+            if(!(jDateTglStart.getDate() == null)){
+                startDate = jDateTglStart.getDate();
+            }
+            if(!(jDateTglEnd.getDate() == null)){
+                endDate = jDateTglEnd.getDate();
+            }
+            
+            
+            parameters.put("TglStart", startDate);
+            parameters.put("TglEnd", endDate);
             
             File file = new File("src/Report/laporanAbsensi.jasper");
             JasperReport jr = (JasperReport) JRLoader.loadObject(file);
@@ -285,7 +306,12 @@ public class reportAbsensi extends javax.swing.JPanel {
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         // TODO add your handling code here:
-       printReport();
+        if(jDateTglEnd.getDate() == null || jDateTglStart.getDate() == null){
+            JOptionPane.showMessageDialog(null, "Filter Date Empty !!");
+        }else{
+            showData();
+            printReport();
+        }
     }//GEN-LAST:event_btnPrintActionPerformed
 
 

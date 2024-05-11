@@ -286,8 +286,8 @@
                                   </Group>
                                   <Component id="navLocation" alignment="0" max="32767" attributes="0"/>
                                   <Component id="navDepartement" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="navLocation2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="navLocation3" max="32767" attributes="0"/>
+                                  <Component id="navDivision" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="navKaryawan" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -304,9 +304,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="navDepartement" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="navLocation2" min="-2" max="-2" attributes="0"/>
+                              <Component id="navDivision" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="navLocation3" min="-2" max="-2" attributes="0"/>
+                              <Component id="navKaryawan" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -388,7 +388,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navDepartementActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="navLocation2">
+                    <Component class="javax.swing.JButton" name="navDivision">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="18" style="1"/>
@@ -406,10 +406,10 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navLocation2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navDivisionActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="navLocation3">
+                    <Component class="javax.swing.JButton" name="navKaryawan">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="18" style="1"/>
@@ -427,7 +427,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navLocation3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navKaryawanActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -445,13 +445,13 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="navLocation4" max="32767" attributes="0"/>
+                                  <Component id="navDaftarAbsensi" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="navLocation5" max="32767" attributes="0"/>
+                                  <Component id="navReimburse" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="navLembur" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -462,11 +462,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="navLocation4" min="-2" max="-2" attributes="0"/>
+                              <Component id="navDaftarAbsensi" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="navLocation5" min="-2" max="-2" attributes="0"/>
+                              <Component id="navLembur" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="59" max="-2" attributes="0"/>
+                              <Component id="navReimburse" min="-2" pref="59" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -484,7 +484,7 @@
                         <Property name="text" type="java.lang.String" value="Transaksi"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="navLocation4">
+                    <Component class="javax.swing.JButton" name="navDaftarAbsensi">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="18" style="1"/>
@@ -502,10 +502,10 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navLocation4ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navDaftarAbsensiActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton1">
+                    <Component class="javax.swing.JButton" name="navReimburse">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="18" style="1"/>
@@ -517,10 +517,10 @@
                         <Property name="horizontalAlignment" type="int" value="2"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navReimburseActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="navLocation5">
+                    <Component class="javax.swing.JButton" name="navLembur">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="18" style="1"/>
@@ -538,7 +538,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navLocation5ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navLemburActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

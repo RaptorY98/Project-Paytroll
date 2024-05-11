@@ -24,6 +24,50 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         pn_utama.add(new ViewDashboard(loginModel));
         pn_utama.repaint();
         pn_utama.revalidate();
+        removeAllNav();
+        validateAccess();
+    }
+    
+    public void removeAllNav(){
+        navLocation.setVisible(false);
+        navDepartement.setVisible(false);
+        navDivision.setVisible(false);
+        navKaryawan.setVisible(false);
+        navDaftarAbsensi.setVisible(false);
+        navLembur.setVisible(false);
+        navReimburse.setVisible(false);
+        
+        btnReportAbsensi.setVisible(false);
+        btnReportDataKaryawan.setVisible(false);
+        btnReportLembur.setVisible(false);
+        btnSlipGaji.setVisible(false);
+        
+        
+    }
+    
+    public void validateAccess(){
+        String role = loginModel.getRole();
+        
+        if(role.equals("admin")){
+            navLocation.setVisible(true);
+            navDepartement.setVisible(true);
+            navDivision.setVisible(true);
+            navKaryawan.setVisible(true);
+            navDaftarAbsensi.setVisible(true);
+            navLembur.setVisible(true);
+            navReimburse.setVisible(true);
+
+            btnReportAbsensi.setVisible(true);
+            btnReportDataKaryawan.setVisible(true);
+            btnReportLembur.setVisible(true);
+            btnSlipGaji.setVisible(true);
+        } 
+        
+        if(role.equals("user")){
+           navDaftarAbsensi.setVisible(true);
+            navLembur.setVisible(true);
+            navReimburse.setVisible(true); 
+        }
     }
 
     /**
@@ -52,13 +96,13 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         navHome = new javax.swing.JButton();
         navLocation = new javax.swing.JButton();
         navDepartement = new javax.swing.JButton();
-        navLocation2 = new javax.swing.JButton();
-        navLocation3 = new javax.swing.JButton();
+        navDivision = new javax.swing.JButton();
+        navKaryawan = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        navLocation4 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        navLocation5 = new javax.swing.JButton();
+        navDaftarAbsensi = new javax.swing.JButton();
+        navReimburse = new javax.swing.JButton();
+        navLembur = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         btnReportLembur = new javax.swing.JButton();
@@ -210,27 +254,27 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             }
         });
 
-        navLocation2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        navLocation2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/personal-information.png"))); // NOI18N
-        navLocation2.setText("Division");
-        navLocation2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        navLocation2.setMinimumSize(new java.awt.Dimension(189, 59));
-        navLocation2.setPreferredSize(new java.awt.Dimension(189, 59));
-        navLocation2.addActionListener(new java.awt.event.ActionListener() {
+        navDivision.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        navDivision.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/personal-information.png"))); // NOI18N
+        navDivision.setText("Division");
+        navDivision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        navDivision.setMinimumSize(new java.awt.Dimension(189, 59));
+        navDivision.setPreferredSize(new java.awt.Dimension(189, 59));
+        navDivision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                navLocation2ActionPerformed(evt);
+                navDivisionActionPerformed(evt);
             }
         });
 
-        navLocation3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        navLocation3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/audience.png"))); // NOI18N
-        navLocation3.setText("Karyawan");
-        navLocation3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        navLocation3.setMinimumSize(new java.awt.Dimension(189, 59));
-        navLocation3.setPreferredSize(new java.awt.Dimension(189, 59));
-        navLocation3.addActionListener(new java.awt.event.ActionListener() {
+        navKaryawan.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        navKaryawan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/audience.png"))); // NOI18N
+        navKaryawan.setText("Karyawan");
+        navKaryawan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        navKaryawan.setMinimumSize(new java.awt.Dimension(189, 59));
+        navKaryawan.setPreferredSize(new java.awt.Dimension(189, 59));
+        navKaryawan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                navLocation3ActionPerformed(evt);
+                navKaryawanActionPerformed(evt);
             }
         });
 
@@ -247,8 +291,8 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(navLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(navDepartement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navLocation2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navLocation3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(navDivision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -262,9 +306,9 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navDepartement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(navLocation2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(navDivision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(navLocation3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(navKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
@@ -274,37 +318,37 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("Transaksi");
 
-        navLocation4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        navLocation4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/schedule.png"))); // NOI18N
-        navLocation4.setText("Daftar Absensi");
-        navLocation4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        navLocation4.setMinimumSize(new java.awt.Dimension(189, 59));
-        navLocation4.setPreferredSize(new java.awt.Dimension(189, 59));
-        navLocation4.addActionListener(new java.awt.event.ActionListener() {
+        navDaftarAbsensi.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        navDaftarAbsensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/schedule.png"))); // NOI18N
+        navDaftarAbsensi.setText("Daftar Absensi");
+        navDaftarAbsensi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        navDaftarAbsensi.setMinimumSize(new java.awt.Dimension(189, 59));
+        navDaftarAbsensi.setPreferredSize(new java.awt.Dimension(189, 59));
+        navDaftarAbsensi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                navLocation4ActionPerformed(evt);
+                navDaftarAbsensiActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/money.png"))); // NOI18N
-        jButton1.setText("Reimburse");
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        navReimburse.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        navReimburse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/money.png"))); // NOI18N
+        navReimburse.setText("Reimburse");
+        navReimburse.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        navReimburse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                navReimburseActionPerformed(evt);
             }
         });
 
-        navLocation5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        navLocation5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/back-in-time.png"))); // NOI18N
-        navLocation5.setText("Lembur");
-        navLocation5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        navLocation5.setMinimumSize(new java.awt.Dimension(189, 59));
-        navLocation5.setPreferredSize(new java.awt.Dimension(189, 59));
-        navLocation5.addActionListener(new java.awt.event.ActionListener() {
+        navLembur.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        navLembur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/back-in-time.png"))); // NOI18N
+        navLembur.setText("Lembur");
+        navLembur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        navLembur.setMinimumSize(new java.awt.Dimension(189, 59));
+        navLembur.setPreferredSize(new java.awt.Dimension(189, 59));
+        navLembur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                navLocation5ActionPerformed(evt);
+                navLemburActionPerformed(evt);
             }
         });
 
@@ -315,12 +359,12 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(navLocation4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navDaftarAbsensi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navLocation5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(navReimburse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navLembur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -328,11 +372,11 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(navLocation4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(navDaftarAbsensi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(navLocation5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(navLembur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(navReimburse, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -559,45 +603,45 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         pn_utama.revalidate();
     }//GEN-LAST:event_navDepartementActionPerformed
 
-    private void navLocation2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocation2ActionPerformed
+    private void navDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navDivisionActionPerformed
         // TODO add your handling code here:
         pn_utama.removeAll();
         pn_utama.add(new DivisionForm(loginModel));
         pn_utama.repaint();
         pn_utama.revalidate();
-    }//GEN-LAST:event_navLocation2ActionPerformed
+    }//GEN-LAST:event_navDivisionActionPerformed
 
-    private void navLocation3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocation3ActionPerformed
+    private void navKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navKaryawanActionPerformed
         // TODO add your handling code here:
         pn_utama.removeAll();
         pn_utama.add(new KaryawanForm(loginModel));
         pn_utama.repaint();
         pn_utama.revalidate();
-    }//GEN-LAST:event_navLocation3ActionPerformed
+    }//GEN-LAST:event_navKaryawanActionPerformed
 
-    private void navLocation4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocation4ActionPerformed
+    private void navDaftarAbsensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navDaftarAbsensiActionPerformed
         // TODO add your handling code here:
         pn_utama.removeAll();
         pn_utama.add(new ListAbsensi(loginModel));
         pn_utama.repaint();
         pn_utama.revalidate();
-    }//GEN-LAST:event_navLocation4ActionPerformed
+    }//GEN-LAST:event_navDaftarAbsensiActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void navReimburseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navReimburseActionPerformed
         // TODO add your handling code here:
         pn_utama.removeAll();
         pn_utama.add(new ReimburseForm(loginModel));
         pn_utama.repaint();
         pn_utama.revalidate();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_navReimburseActionPerformed
 
-    private void navLocation5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocation5ActionPerformed
+    private void navLemburActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLemburActionPerformed
         // TODO add your handling code here:
         pn_utama.removeAll();
         pn_utama.add(new lemburForm(loginModel));
         pn_utama.repaint();
         pn_utama.revalidate();
-    }//GEN-LAST:event_navLocation5ActionPerformed
+    }//GEN-LAST:event_navLemburActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
@@ -677,7 +721,6 @@ public class MainMenu_Utama extends javax.swing.JFrame {
     private javax.swing.JButton btnReportDataKaryawan;
     private javax.swing.JButton btnReportLembur;
     private javax.swing.JButton btnSlipGaji;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
@@ -698,13 +741,14 @@ public class MainMenu_Utama extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton navDaftarAbsensi;
     private javax.swing.JButton navDepartement;
+    private javax.swing.JButton navDivision;
     private javax.swing.JButton navHome;
+    private javax.swing.JButton navKaryawan;
+    private javax.swing.JButton navLembur;
     private javax.swing.JButton navLocation;
-    private javax.swing.JButton navLocation2;
-    private javax.swing.JButton navLocation3;
-    private javax.swing.JButton navLocation4;
-    private javax.swing.JButton navLocation5;
+    private javax.swing.JButton navReimburse;
     private javax.swing.JPanel pn_dasar;
     private javax.swing.JPanel pn_kanan;
     private javax.swing.JPanel pn_kiri;
