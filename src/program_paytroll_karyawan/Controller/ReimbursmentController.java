@@ -35,7 +35,8 @@ public class ReimbursmentController {
     private List<KaryawanModel> listKaryawan;
     private final ImplementReimburse dao;
 //    private final ImplementLocation implementLocation;
-
+    
+    
     public ReimbursmentController(ReimburseForm panel) {
         this.panel = panel;
         dao = new ReimbursmentDAO();
@@ -43,7 +44,12 @@ public class ReimbursmentController {
     
     
     public void initTable(){
-        list = dao.getReimbursment();
+        
+        if(panel.getLoginUser().getRole().equals("admin")){
+            list = dao.getReimbursment();
+        }else{
+            list = dao.getReimbursmentSearch("", panel.getLoginUser().getEmploye_id());
+        }
         
         this.applyTable(list);
     }
@@ -114,9 +120,13 @@ public class ReimbursmentController {
         if(panel.getLoginUser() != null){
             requestFrom = panel.getLoginUser().getEmploye_id();
         }
-        if(panel.getKaryawanCombo().getSelectedIndex() > 0){
-            Object selectedEmploye = panel.getKaryawanCombo().getSelectedItem();
-            employe_id = Integer.valueOf(((ComboBoxModel)selectedEmploye).getValue());
+        if(panel.getLoginUser().getRole().equals("admin")){
+            if(panel.getKaryawanCombo().getSelectedIndex() > 0){
+                Object selectedEmploye = panel.getKaryawanCombo().getSelectedItem();
+                employe_id = Integer.valueOf(((ComboBoxModel)selectedEmploye).getValue());
+            }
+        }else{
+            employe_id = panel.getLoginUser().getEmploye_id();
         }
         ReimbursmentModel model = new ReimbursmentModel();
         model.setReimbursment_no(panel.getNoReimburse().getText());
@@ -197,7 +207,11 @@ public class ReimbursmentController {
     
     public void search(){
         String search = panel.getSearch().getText();
-        list = dao.getReimbursmentSearch(search);
+        if(panel.getLoginUser().getRole().equals("admin")){
+            list = dao.getReimbursmentSearch(search,0);
+        }else{
+            list = dao.getReimbursmentSearch(search, panel.getLoginUser().getEmploye_id());
+        }
         
         this.applyTable(list);
     }

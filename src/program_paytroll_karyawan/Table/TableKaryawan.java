@@ -46,7 +46,7 @@ public class TableKaryawan extends AbstractTableModel{
             case 6 : return list.get(rowIndex).getDepartement().getName();
             case 7 : return list.get(rowIndex).getDivision().getName();
             case 8 : return list.get(rowIndex).getRole();
-            case 9 : return list.get(rowIndex).getSalary();
+            case 9 : return list.get(rowIndex).getSalaryString();
             case 10 : return list.get(rowIndex).toStringIs_Active();
             case 11 : return list.get(rowIndex).getCreated_at();
             case 12 : return list.get(rowIndex).getCreated_by();

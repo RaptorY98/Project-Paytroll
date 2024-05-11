@@ -15,6 +15,7 @@ import program_paytroll_karyawan.Dao.KaryawanDAO;
 import program_paytroll_karyawan.Model.AbsensiModel;
 import program_paytroll_karyawan.Model.ComboBoxModel;
 import program_paytroll_karyawan.Model.KaryawanModel;
+import program_paytroll_karyawan.Model.LoginModel;
 import program_paytroll_karyawan.Table.ButtonColumn;
 import program_paytroll_karyawan.Table.TableAbsensi;
 import program_paytroll_karyawan.View.ListAbsensi;
@@ -31,15 +32,21 @@ public class ListAbsensiController {
     private AbsensiModel modelAbsen;
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     private final SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd H:m:s");
-
+    private LoginModel loginData;
+    
     public ListAbsensiController(ListAbsensi panel) {
         this.panel = panel;
-        
+        loginData = panel.getLoginData();
         dao = new AbsensiDAO();
     }
     
     public void initAbsensi(){
-        list = dao.getAbsensi();
+        
+        if(loginData.getRole().equals("admin")){
+            list = dao.getAbsensi();
+        }else{
+            list = dao.getAbsensiSearch(null, null, loginData.getEmploye_id());
+        }
         
         panel.getTable().setModel(new TableAbsensi(list));
 
@@ -58,9 +65,13 @@ public class ListAbsensiController {
     }
     public void search(){
         int employe_id = 0;
-        if(panel.getKaryawanCombo().getSelectedIndex() > 0){
-            Object selectedEmploye = panel.getKaryawanCombo().getSelectedItem();
-            employe_id = Integer.valueOf(((ComboBoxModel)selectedEmploye).getValue());
+        if(loginData.getRole().equals("admin")){
+            if(panel.getKaryawanCombo().getSelectedIndex() > 0){
+                Object selectedEmploye = panel.getKaryawanCombo().getSelectedItem();
+                employe_id = Integer.valueOf(((ComboBoxModel)selectedEmploye).getValue());
+            }
+        }else{
+            employe_id = loginData.getEmploye_id();
         }
         String fromDate = "";
         String toDate = "";

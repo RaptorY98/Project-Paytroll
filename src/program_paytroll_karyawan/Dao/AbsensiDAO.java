@@ -170,7 +170,7 @@ public class AbsensiDAO implements ImplementAbsen {
         list = new ArrayList<AbsensiModel>();
         String sqlWhere1 = "";
         String sqlWhere2 = "";
-        if(fromDate == null || toDate == null || !fromDate.equals("") || !toDate.equals("")){
+        if(fromDate != null && toDate != null && !fromDate.equals("") && !toDate.equals("")){
             sqlWhere1 = " AND absensi_date BETWEEN '"+fromDate+"' AND '"+toDate+"'";
         }
         if(employe_id != 0){

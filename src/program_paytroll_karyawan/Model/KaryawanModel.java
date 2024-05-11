@@ -6,6 +6,7 @@
 package program_paytroll_karyawan.Model;
 
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.Date;
 
 /**
@@ -175,6 +176,10 @@ public class KaryawanModel {
             text = "Active";
         }
         return text;
+    }
+    
+    public String getSalaryString(){
+        return "Rp. "+ new DecimalFormat("#,##0.00").format(salary);
     }
     
 }

@@ -41,6 +41,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         btnReportDataKaryawan.setVisible(false);
         btnReportLembur.setVisible(false);
         btnSlipGaji.setVisible(false);
+        jLabel13.setVisible(false);
         
         
     }
@@ -57,6 +58,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             navLembur.setVisible(true);
             navReimburse.setVisible(true);
 
+            jLabel13.setVisible(true);
             btnReportAbsensi.setVisible(true);
             btnReportDataKaryawan.setVisible(true);
             btnReportLembur.setVisible(true);

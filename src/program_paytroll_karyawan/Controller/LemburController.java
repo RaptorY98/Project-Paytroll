@@ -66,17 +66,56 @@ public class LemburController {
     public void initLembur(){
 //        list = dao.getData();
 //        this.applyTable(list);
-        listCustom = dao.getCustomLembur();
+        if(panel.getLoginUser().getRole().equals("admin")){
+            listCustom = dao.getCustomLembur();
+        }else{
+            listCustom = dao.getCustomLemburSearch(panel.getLoginUser().getEmploye_id(),null,null);
+        }
         this.applyTableCustom(listCustom);
     }
-    public void employeChanged(){
-        Object selectedLocation = panel.getEmployeCombo().getSelectedItem();
-        String stringSelected = ((ComboBoxModel)selectedLocation).getValue();
-        Date selectedDateMin = null;
-        Date selectedDateMax = null;
-        if(!stringSelected.equals("") && stringSelected != null){
+    public void employeChanged(int id){
+        if(id == 0){
+            Object selectedLocation = panel.getEmployeCombo().getSelectedItem();
+            String stringSelected = ((ComboBoxModel)selectedLocation).getValue();
+            Date selectedDateMin = null;
+            Date selectedDateMax = null;
+            if(!stringSelected.equals("") && stringSelected != null){
+                panel.getLemburDate().setDate(null);
+                int employeId = Integer.valueOf(stringSelected);
+                AbsensiDAO absensiDAO = new AbsensiDAO();
+                listAbsensi = absensiDAO.getAbsensiSearch("", "", employeId);
+                for(AbsensiModel model:listAbsensi){
+                    System.out.println(model.getAbsensi_date());
+                    if(selectedDateMin == null || selectedDateMax == null){
+                        selectedDateMin = model.getAbsensi_date();
+                        selectedDateMax = model.getAbsensi_date();
+                    }else{
+                        if(selectedDateMin.after(model.getAbsensi_date())){
+                            selectedDateMin = model.getAbsensi_date();
+                        }
+
+                        if(selectedDateMax.before(model.getAbsensi_date())){
+                            selectedDateMax = model.getAbsensi_date();
+                        }
+
+                    }
+                }
+                if(selectedDateMin == null && selectedDateMax == null){
+                    panel.getLemburDate().setMinSelectableDate(new Date());
+                    panel.getLemburDate().setMaxSelectableDate(new Date(System.currentTimeMillis()-24*60*60*1000));
+                }else{
+                    panel.getLemburDate().setMinSelectableDate(selectedDateMin);
+                    panel.getLemburDate().setMaxSelectableDate(selectedDateMax);
+                }
+
+            }else{
+                listAbsensi = null;
+            }
+        }else{
             panel.getLemburDate().setDate(null);
-            int employeId = Integer.valueOf(stringSelected);
+            int employeId = id;
+            Date selectedDateMin = null;
+            Date selectedDateMax = null;
             AbsensiDAO absensiDAO = new AbsensiDAO();
             listAbsensi = absensiDAO.getAbsensiSearch("", "", employeId);
             for(AbsensiModel model:listAbsensi){
@@ -88,11 +127,11 @@ public class LemburController {
                     if(selectedDateMin.after(model.getAbsensi_date())){
                         selectedDateMin = model.getAbsensi_date();
                     }
-                    
+
                     if(selectedDateMax.before(model.getAbsensi_date())){
                         selectedDateMax = model.getAbsensi_date();
                     }
-                    
+
                 }
             }
             if(selectedDateMin == null && selectedDateMax == null){
@@ -102,10 +141,8 @@ public class LemburController {
                 panel.getLemburDate().setMinSelectableDate(selectedDateMin);
                 panel.getLemburDate().setMaxSelectableDate(selectedDateMax);
             }
-                            
-        }else{
-            listAbsensi = null;
         }
+        
     }
     
     public void lemburChanged(){
@@ -307,10 +344,15 @@ public class LemburController {
     
     public void search(){
          int employe_id = 0;
-        if(panel.getEmployeListCombo().getSelectedIndex() > 0){
-            Object selectedEmploye = panel.getEmployeListCombo().getSelectedItem();
-            employe_id = Integer.valueOf(((ComboBoxModel)selectedEmploye).getValue());
-        }
+         if(panel.getLoginUser().getRole().equals("admin")){
+             if(panel.getEmployeListCombo().getSelectedIndex() > 0){
+                Object selectedEmploye = panel.getEmployeListCombo().getSelectedItem();
+                employe_id = Integer.valueOf(((ComboBoxModel)selectedEmploye).getValue());
+            }
+         }else{
+             employe_id = panel.getLoginUser().getEmploye_id();
+         }
+         
         String fromDate = "";
         String toDate = "";
         if(panel.getFilterStart().getDate() != null){
@@ -326,7 +368,18 @@ public class LemburController {
     }
    
     public void detail(CustomLemburModel model){
-        list = dao.getDataByMonth(model.getNameMonth());
+        
+        String fromDate = "";
+        String toDate = "";
+        if(panel.getFilterStart().getDate() != null){
+            fromDate = sdf.format(panel.getFilterStart().getDate());
+        }
+        
+        if(panel.getFilterEnd().getDate() != null){
+            toDate = sdf.format(panel.getFilterEnd().getDate());
+        }
+        
+        list = dao.getDataByMonth(model.getNameMonth(),model.getEmploye_id(),fromDate,toDate);
         this.applyTable(list);
         panel.moveToDetail();
     }

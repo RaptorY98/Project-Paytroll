@@ -27,6 +27,22 @@ public class ListAbsensi extends javax.swing.JPanel {
         controller = new ListAbsensiController(this);
         controller.initAbsensi();
         controller.initEmploye();
+        
+        checkUserAccess();
+    }
+    
+    public void checkUserAccess(){
+        if(loginData.getRole().equals("user")){
+            jLabel3.setVisible(false);
+            cbKaryawan.setVisible(false);
+        }else{
+            jLabel3.setVisible(true);
+            cbKaryawan.setVisible(true);
+        }
+    }
+    
+    public LoginModel getLoginData(){
+        return loginData;
     }
     
     public JComboBox getKaryawanCombo(){

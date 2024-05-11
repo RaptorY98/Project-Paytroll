@@ -15,7 +15,7 @@ import program_paytroll_karyawan.Model.ReimbursmentModel;
  */
 public interface ImplementReimburse {
     public List<ReimbursmentModel> getReimbursment();
-    public List<ReimbursmentModel> getReimbursmentSearch(String nama);
+    public List<ReimbursmentModel> getReimbursmentSearch(String nama,int employeId);
     public List<ReimbursmentDetailModel> getReimbursmentDetail(int id);
     
     public int insertReimbursment(ReimbursmentModel model);

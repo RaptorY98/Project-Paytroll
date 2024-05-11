@@ -35,6 +35,22 @@ public class lemburForm extends javax.swing.JPanel {
         controller.initEmploye();
         controller.initLembur();
         
+        validateUserAccess();
+        
+    }
+    
+    public void validateUserAccess(){
+        if(loginData.getRole().equals("user")){
+            jLabel3.setVisible(false);
+            cbEmployeList.setVisible(false);
+            jLabel6.setVisible(false);
+            karyawanCombo.setVisible(false);
+        }else{
+            jLabel3.setVisible(true);
+            cbEmployeList.setVisible(true);
+            jLabel6.setVisible(true);
+            karyawanCombo.setVisible(true);
+        }
     }
     
     public LoginModel getLoginUser(){
@@ -455,6 +471,7 @@ public class lemburForm extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         this.moveToForm();
+        controller.employeChanged(loginData.getEmploye_id());
 //        editButton.setVisible(false);
 //        controller.reset();
     }//GEN-LAST:event_addNavButtonActionPerformed
@@ -468,7 +485,7 @@ public class lemburForm extends javax.swing.JPanel {
     private void karyawanComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_karyawanComboItemStateChanged
         // TODO add your handling code here:
         if(evt.getStateChange() == ItemEvent.SELECTED){
-            controller.employeChanged();
+            controller.employeChanged(0);
         }
     }//GEN-LAST:event_karyawanComboItemStateChanged
 

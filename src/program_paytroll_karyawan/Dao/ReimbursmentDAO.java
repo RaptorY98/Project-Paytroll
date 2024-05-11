@@ -57,12 +57,21 @@ public class ReimbursmentDAO implements ImplementReimburse{
     }
 
     @Override
-    public List<ReimbursmentModel> getReimbursmentSearch(String search) {
+    public List<ReimbursmentModel> getReimbursmentSearch(String search,int employeId) {
         list = new ArrayList<ReimbursmentModel>(); 
         try {
-            String like = "'%"+search+"%'";
+            String sql = "SELECT * FROM reimbursment WHERE 1=1";
+            
+            if(!search.equals("")){
+                String like = "'%"+search+"%'";
+                sql += " AND reimbursment_no = "+like;
+            }
+            
+            if(employeId > 0){
+                sql += " AND employe_id = '"+employeId+"'";
+            }
             Statement statement = DbConnection.getConnection().createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM reimbursment WHERE reimbursment_no like "+like);
+            ResultSet result = statement.executeQuery(sql);
             
             while (result.next()) { 
                 ReimbursmentModel model = new ReimbursmentModel();

@@ -54,7 +54,7 @@ public class ReimburseForm extends javax.swing.JPanel {
         cardLayout.revalidate();
         controller.reset();
     }
-    
+        
     public JTextField getNoReimburse(){
         return noReimburseTxt;
     }
@@ -93,6 +93,20 @@ public class ReimburseForm extends javax.swing.JPanel {
         this.controller.initEmploye();
         
         this.controller.initTable();
+        
+        validateAccess();
+    }
+    
+    public void validateAccess(){
+        if(loginData.getRole().equals("admin")){
+            System.out.println("Masok");
+            jLabel10.setVisible(true);
+            karyawanCombo.setVisible(true);
+        }else{
+            System.out.println("Kaga");
+            jLabel10.setVisible(false);
+            karyawanCombo.setVisible(false);
+        }
     }
 
     /**

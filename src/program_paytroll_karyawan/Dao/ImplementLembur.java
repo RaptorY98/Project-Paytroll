@@ -18,7 +18,7 @@ public interface ImplementLembur {
   public List<LemburModel> getDataById(int id);
   public List<LemburModel> getDataSearch(int employeId,String fromDate, String endDate);
   
-  public List<LemburModel> getDataByMonth(String monthName);
+  public List<LemburModel> getDataByMonth(String monthName,int employeId,String fromDate, String endDate);
   public void insert(LemburModel model);
   
   public void delete(int id);

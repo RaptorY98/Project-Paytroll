@@ -130,7 +130,7 @@ public class LemburDAO implements ImplementLembur{
         list = new ArrayList<LemburModel>();
         String sqlWhere1 = "";
         String sqlWhere2 = "";
-        if(fromDate == null || endDate == null || !fromDate.equals("") || !endDate.equals("")){
+        if(fromDate != null && endDate != null && !fromDate.equals("") && !endDate.equals("")){
             sqlWhere1 = " AND a.absensi_date BETWEEN '"+fromDate+"' AND '"+endDate+"'";
         }
         if(employeId != 0){
@@ -218,7 +218,7 @@ public class LemburDAO implements ImplementLembur{
         list2 = new ArrayList<CustomLemburModel>();
         String sqlWhere1 = "";
         String sqlWhere2 = "";
-        if(fromDate == null || endDate == null || !fromDate.equals("") || !endDate.equals("")){
+        if(fromDate != null && endDate != null && !fromDate.equals("") && !endDate.equals("")){
             sqlWhere1 = " AND a.absensi_date BETWEEN '"+fromDate+"' AND '"+endDate+"'";
         }
         if(employeId != 0){
@@ -247,12 +247,16 @@ public class LemburDAO implements ImplementLembur{
     }
 
     @Override
-    public List<LemburModel> getDataByMonth(String monthName) {
+    public List<LemburModel> getDataByMonth(String monthName,int employeId, String fromDate, String endDate) {
         list = new ArrayList<LemburModel>();
+        String sqlWhere1 = "";
+        if(fromDate != null && endDate != null && !fromDate.equals("") && !endDate.equals("")){
+            sqlWhere1 = " AND a.absensi_date BETWEEN '"+fromDate+"' AND '"+endDate+"'";
+        }
         try {
             
             Statement statement = DbConnection.getConnection().createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM lembur l LEFT JOIN absensi a ON l.absensi_id = a.absensi_id WHERE MONTHNAME(a.absensi_date) = '"+monthName+"'");
+            ResultSet result = statement.executeQuery("SELECT * FROM lembur l LEFT JOIN absensi a ON l.absensi_id = a.absensi_id WHERE MONTHNAME(a.absensi_date) = '"+monthName+"' AND a.employe_id = '"+employeId+"'"+sqlWhere1);
             
             while (result.next()) { 
                 LemburModel model = new LemburModel();
