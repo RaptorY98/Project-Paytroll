@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import program_paytroll_karyawan.Dao.ImplementLogin;
 import program_paytroll_karyawan.Dao.LoginDAO;
 import program_paytroll_karyawan.View.Form_Login;
+import program_paytroll_karyawan.View.MainMenu;
 import program_paytroll_karyawan.View.MainMenu_Utama;
 
 /**
@@ -38,7 +39,8 @@ public class LoginController {
         loginModel.setPassword(password);
         String Response = implementLogin.authUser(loginModel);
         if(Response.equals("Success")){
-            new MainMenu_Utama(loginModel).setVisible(true);
+//            new MainMenu_Utama(loginModel).setVisible(true);
+            new MainMenu(loginModel).setVisible(true);
             panel.setVisible(false);
             JOptionPane.showMessageDialog(null,"Login Success");
         }else{

@@ -5,6 +5,7 @@
 package program_paytroll_karyawan.View;
 
 import javax.swing.JFrame;
+import program_paytroll_karyawan.Model.LoginModel;
 
 /**
  *
@@ -12,12 +13,67 @@ import javax.swing.JFrame;
  */
 public class MainMenu extends javax.swing.JFrame {
 
+    private LoginModel loginModel;
     /**
      * Creates new form MainMenu
      */
-    public MainMenu() {
+    public MainMenu(LoginModel model) {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        loginModel = model;
+        initComponents();
+        pnUtama.removeAll();
+        pnUtama.add(new ViewDashboard(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
+        
+        removeAllNav();
+        validateAccess();
+    }
+    
+    public void removeAllNav(){
+        navLocation.setVisible(false);
+        navDepartement.setVisible(false);
+        navDivision.setVisible(false);
+        navKaryawan.setVisible(false);
+        navDaftarAbsensi.setVisible(false);
+        navLembur.setVisible(false);
+        navReimburse.setVisible(false);
+        
+        btnReportAbsensi.setVisible(false);
+        btnReportDataKaryawan.setVisible(false);
+        btnReportLembur.setVisible(false);
+        btnSlipGaji.setVisible(false);
+        jLabel13.setVisible(false);
+        
+        
+    }
+    
+    public void validateAccess(){
+        String role = loginModel.getRole();
+//        role = role.isEmpty("") ? "admin" : role;
+        role = (role == null || role.equals("")) ? "admin" : role;
+        if(role.equals("admin")){
+            navLocation.setVisible(true);
+            navDepartement.setVisible(true);
+            navDivision.setVisible(true);
+            navKaryawan.setVisible(true);
+            navDaftarAbsensi.setVisible(true);
+            navLembur.setVisible(true);
+            navReimburse.setVisible(true);
+
+            jLabel13.setVisible(true);
+            btnReportAbsensi.setVisible(true);
+            btnReportDataKaryawan.setVisible(true);
+            btnReportLembur.setVisible(true);
+            btnSlipGaji.setVisible(true);
+        } 
+        
+        if(role.equals("user")){
+           navDaftarAbsensi.setVisible(true);
+            navLembur.setVisible(true);
+            navReimburse.setVisible(true); 
+        }
     }
 
     /**
@@ -53,13 +109,14 @@ public class MainMenu extends javax.swing.JFrame {
         btnReportLembur = new javax.swing.JButton();
         btnReportAbsensi = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
+        navPeriode = new javax.swing.JButton();
         pnKanan = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        pnUtama = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -279,32 +336,50 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(153, 153, 153));
         jLabel13.setText("Report");
 
+        navPeriode.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        navPeriode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/audience.png"))); // NOI18N
+        navPeriode.setText("Periode");
+        navPeriode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        navPeriode.setMinimumSize(new java.awt.Dimension(189, 59));
+        navPeriode.setPreferredSize(new java.awt.Dimension(189, 59));
+        navPeriode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navPeriodeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout baseScrollPaneLayout = new javax.swing.GroupLayout(baseScrollPane);
         baseScrollPane.setLayout(baseScrollPaneLayout);
         baseScrollPaneLayout.setHorizontalGroup(
             baseScrollPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(baseScrollPaneLayout.createSequentialGroup()
                 .addGroup(baseScrollPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(baseScrollPaneLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(baseScrollPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnReportDataKaryawan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(btnReportLembur, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnReportAbsensi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(navDaftarAbsensi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(navLembur, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(navReimburse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSlipGaji, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(baseScrollPaneLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(baseScrollPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(navPeriode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(navLocation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(navDepartement, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(navDivision, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(navKaryawan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(navHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(10, Short.MAX_VALUE))
+            .addGroup(baseScrollPaneLayout.createSequentialGroup()
+                .addGroup(baseScrollPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(baseScrollPaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(baseScrollPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnReportDataKaryawan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                    .addComponent(btnReportLembur, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnReportAbsensi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navLocation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navDepartement, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navDivision, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navKaryawan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navDaftarAbsensi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navLembur, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navReimburse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSlipGaji, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         baseScrollPaneLayout.setVerticalGroup(
             baseScrollPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,15 +396,17 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(navDivision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(navKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
+                .addComponent(navPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navDaftarAbsensi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(navLembur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(navReimburse, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel13)
                 .addGap(0, 0, 0)
                 .addComponent(btnReportAbsensi, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -339,7 +416,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(btnReportDataKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnSlipGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jScrollPane1.setViewportView(baseScrollPane);
@@ -360,7 +437,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(pnKiriLayout.createSequentialGroup()
                 .addComponent(pnKiriAtas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(pnKiriBawah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -392,9 +469,10 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton6))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(823, 823, 823)
+                .addComponent(jButton6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,10 +484,7 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jLabel2)
-                .addGap(0, 0, 0))
+            .addComponent(jLabel2)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,18 +495,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        pnUtama.setBackground(new java.awt.Color(255, 255, 255));
+        pnUtama.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -439,14 +504,14 @@ public class MainMenu extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnUtama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnUtama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -455,10 +520,7 @@ public class MainMenu extends javax.swing.JFrame {
         pnKananLayout.setHorizontalGroup(
             pnKananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnKananLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnKananLayout.setVerticalGroup(
             pnKananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -489,98 +551,99 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void navHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navHomeActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new ViewDashboard(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        
+        pnUtama.removeAll();
+        pnUtama.add(new ViewDashboard(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_navHomeActionPerformed
 
     private void navLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLocationActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new LocationForm(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        pnUtama.removeAll();
+        pnUtama.add(new LocationForm(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_navLocationActionPerformed
 
     private void navDepartementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navDepartementActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new DepartementForm(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        pnUtama.removeAll();
+        pnUtama.add(new DepartementForm(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_navDepartementActionPerformed
 
     private void navDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navDivisionActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new DivisionForm(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        pnUtama.removeAll();
+        pnUtama.add(new DivisionForm(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_navDivisionActionPerformed
 
     private void navKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navKaryawanActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new KaryawanForm(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        pnUtama.removeAll();
+        pnUtama.add(new KaryawanForm(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_navKaryawanActionPerformed
 
     private void navDaftarAbsensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navDaftarAbsensiActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new ListAbsensi(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        pnUtama.removeAll();
+        pnUtama.add(new ListAbsensi(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_navDaftarAbsensiActionPerformed
 
     private void navLemburActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLemburActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new lemburForm(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        pnUtama.removeAll();
+        pnUtama.add(new lemburForm(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_navLemburActionPerformed
 
     private void navReimburseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navReimburseActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new ReimburseForm(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        pnUtama.removeAll();
+        pnUtama.add(new ReimburseForm(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_navReimburseActionPerformed
 
     private void btnSlipGajiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSlipGajiActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new slipGaji(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        pnUtama.removeAll();
+        pnUtama.add(new slipGaji(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_btnSlipGajiActionPerformed
 
     private void btnReportDataKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportDataKaryawanActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new reportKaryawan(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        pnUtama.removeAll();
+        pnUtama.add(new reportKaryawan(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_btnReportDataKaryawanActionPerformed
 
     private void btnReportLemburActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportLemburActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new reportLembur(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        pnUtama.removeAll();
+        pnUtama.add(new reportLembur(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_btnReportLemburActionPerformed
 
     private void btnReportAbsensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportAbsensiActionPerformed
         // TODO add your handling code here:
-//        pn_utama.removeAll();
-//        pn_utama.add(new reportAbsensi(loginModel));
-//        pn_utama.repaint();
-//        pn_utama.revalidate();
+        pnUtama.removeAll();
+        pnUtama.add(new reportAbsensi(loginModel));
+        pnUtama.repaint();
+        pnUtama.revalidate();
     }//GEN-LAST:event_btnReportAbsensiActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -588,6 +651,10 @@ public class MainMenu extends javax.swing.JFrame {
         this.setVisible(false);
         new Form_Login().setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void navPeriodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navPeriodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_navPeriodeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -619,7 +686,7 @@ public class MainMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenu().setVisible(true);
+                new MainMenu(new LoginModel()).setVisible(true);
             }
         });
     }
@@ -642,7 +709,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton navDaftarAbsensi;
     private javax.swing.JButton navDepartement;
@@ -651,10 +717,12 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton navKaryawan;
     private javax.swing.JButton navLembur;
     private javax.swing.JButton navLocation;
+    private javax.swing.JButton navPeriode;
     private javax.swing.JButton navReimburse;
     private javax.swing.JPanel pnKanan;
     private javax.swing.JPanel pnKiri;
     private javax.swing.JPanel pnKiriAtas;
     private javax.swing.JPanel pnKiriBawah;
+    private javax.swing.JPanel pnUtama;
     // End of variables declaration//GEN-END:variables
 }

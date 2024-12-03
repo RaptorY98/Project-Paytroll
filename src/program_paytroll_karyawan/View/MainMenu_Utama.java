@@ -100,6 +100,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         navDepartement = new javax.swing.JButton();
         navDivision = new javax.swing.JButton();
         navKaryawan = new javax.swing.JButton();
+        navPeriode = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         navDaftarAbsensi = new javax.swing.JButton();
@@ -280,6 +281,18 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             }
         });
 
+        navPeriode.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        navPeriode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/audience.png"))); // NOI18N
+        navPeriode.setText("Periode");
+        navPeriode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        navPeriode.setMinimumSize(new java.awt.Dimension(189, 59));
+        navPeriode.setPreferredSize(new java.awt.Dimension(189, 59));
+        navPeriode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navPeriodeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -287,14 +300,15 @@ public class MainMenu_Utama extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(navHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navHome, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(navLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(navDepartement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(navDivision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(navKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navPeriode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -311,7 +325,9 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                 .addComponent(navDivision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -437,7 +453,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btnReportAbsensi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSlipGaji, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnReportDataKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
+                    .addComponent(btnReportDataKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 244, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -483,14 +499,14 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         pn_kiri.setLayout(pn_kiriLayout);
         pn_kiriLayout.setHorizontalGroup(
             pn_kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(pn_kiriLayout.createSequentialGroup()
                 .addGroup(pn_kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pn_kiriLayout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(jLabel5)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         pn_kiriLayout.setVerticalGroup(
             pn_kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -683,6 +699,15 @@ public class MainMenu_Utama extends javax.swing.JFrame {
         pn_utama.revalidate();
     }//GEN-LAST:event_btnSlipGajiActionPerformed
 
+    private void navPeriodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navPeriodeActionPerformed
+        // TODO add your handling code here:
+         // TODO add your handling code here:
+        pn_utama.removeAll();
+        pn_utama.add(new PeriodeForm(loginModel));
+        pn_utama.repaint();
+        pn_utama.revalidate();
+    }//GEN-LAST:event_navPeriodeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -750,6 +775,7 @@ public class MainMenu_Utama extends javax.swing.JFrame {
     private javax.swing.JButton navKaryawan;
     private javax.swing.JButton navLembur;
     private javax.swing.JButton navLocation;
+    private javax.swing.JButton navPeriode;
     private javax.swing.JButton navReimburse;
     private javax.swing.JPanel pn_dasar;
     private javax.swing.JPanel pn_kanan;

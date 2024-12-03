@@ -25,7 +25,7 @@ public class DbConnection {
     //            String password = "JMqx28EX";
                 String URI = "jdbc:mysql://localhost/payroll_java";
                 String user = "root";
-                String password = "";
+                String password = "[password]";
 
                 DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 
