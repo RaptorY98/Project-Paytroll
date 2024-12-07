@@ -16,6 +16,7 @@ import program_paytroll_karyawan.Dao.ImplementLogin;
 import program_paytroll_karyawan.Dao.LoginDAO;
 import program_paytroll_karyawan.View.Form_Login;
 import program_paytroll_karyawan.View.MainMenu;
+import program_paytroll_karyawan.View.MainMenu2;
 import program_paytroll_karyawan.View.MainMenu_Utama;
 
 /**
@@ -40,7 +41,7 @@ public class LoginController {
         String Response = implementLogin.authUser(loginModel);
         if(Response.equals("Success")){
 //            new MainMenu_Utama(loginModel).setVisible(true);
-            new MainMenu(loginModel).setVisible(true);
+            new MainMenu2(loginModel).setVisible(true);
             panel.setVisible(false);
             JOptionPane.showMessageDialog(null,"Login Success");
         }else{
