@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/rifki-alfariz-shidiq/Documents/Data/Java/Project-Paytroll/src/program_paytroll_karyawan/Model/CustomLemburModel.java</file>
-            <file>file:/home/rifki-alfariz-shidiq/Documents/Data/Java/Project-Paytroll/src/program_paytroll_karyawan/Config/DbConnection.java</file>
             <file>file:/home/rifki-alfariz-shidiq/Documents/Data/Java/Project-Paytroll/src/program_paytroll_karyawan/Controller/PeriodeController.java</file>
-            <file>file:/home/rifki-alfariz-shidiq/Documents/Data/Java/Project-Paytroll/src/program_paytroll_karyawan/View/MainMenu_Utama.java</file>
+            <file>file:/home/rifki-alfariz-shidiq/Documents/Data/Java/Project-Paytroll/src/program_paytroll_karyawan/Config/DbConnection.java</file>
+            <file>file:/home/rifki-alfariz-shidiq/Documents/Data/Java/Project-Paytroll/src/program_paytroll_karyawan/View/MainMenu2.java</file>
             <file>file:/home/rifki-alfariz-shidiq/Documents/Data/Java/Project-Paytroll/src/program_paytroll_karyawan/Controller/LoginController.java</file>
-            <file>file:/home/rifki-alfariz-shidiq/Documents/Data/Java/Project-Paytroll/src/program_paytroll_karyawan/View/DivisionForm.java</file>
             <file>file:/home/rifki-alfariz-shidiq/Documents/Data/Java/Project-Paytroll/src/program_paytroll_karyawan/View/PeriodeForm.java</file>
             <file>file:/home/rifki-alfariz-shidiq/Documents/Data/Java/Project-Paytroll/src/program_paytroll_karyawan/View/Form_Login.java</file>
         </group>

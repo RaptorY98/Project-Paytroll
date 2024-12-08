@@ -6,6 +6,7 @@ package program_paytroll_karyawan.View;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -197,9 +198,9 @@ public class MainMenu2 extends javax.swing.JFrame {
     }
 
     private void addSidebar() {
-        ImageIcon iconHome = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/speedometer.png"));
-        ImageIcon iconLogout = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/Logout Rounded_1.png"));
-        ImageIcon iconMaster = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/icons8-folder-32.png"));
+        ImageIcon iconHome      = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/speedometer.png"));
+        ImageIcon iconLogout    = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/Logout Rounded_1.png"));
+        ImageIcon iconMaster    = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/folder.png"));
         ImageIcon iconLocation = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/pin.png"));
         ImageIcon iconDepartement = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/building.png"));
         ImageIcon iconDivision = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/personal-information.png"));
