@@ -7,6 +7,7 @@ package program_paytroll_karyawan.Controller;
 
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -66,11 +67,12 @@ public class KaryawanController {
     public void reset(){
         panel.getEmployeName().setText("");
         panel.getNik().setText("");
-        panel.getDob().setDateFormatString("");
+//        panel.getDob().setDateFormatString("");
+        panel.getDob().setDate(null);
         panel.getUsername().setText("");
         panel.getPassword().setText("");
         panel.getSalary().setText("");        
-        panel.getDob().setDate(new Date());
+//        panel.getDob().setDate(new Date());
         panel.getLocationCombo().getModel().setSelectedItem(new ComboBoxModel("",""));
         panel.getDepartementCombo().getModel().setSelectedItem(new ComboBoxModel("",""));
         panel.getDepartementCombo().getModel().setSelectedItem(new ComboBoxModel("", ""));
@@ -188,7 +190,7 @@ public class KaryawanController {
         Object selectedActive = panel.getIsActive().getSelectedItem();
         int isActive = Integer.valueOf(((ComboBoxModel)selectedActive).getValue());
         
-        Date dob = panel.getDob().getDate();
+        LocalDate dob = panel.getDob().getDate();
         KaryawanModel model = new KaryawanModel();
         model.setEmploye_name(panel.getEmployeName().getText());
         model.setNik(panel.getNik().getText());
@@ -390,7 +392,7 @@ public class KaryawanController {
         Object selectedActive = panel.getIsActive().getSelectedItem();
         int isActive = Integer.valueOf(((ComboBoxModel)selectedActive).getValue());
         
-        Date dob = panel.getDob().getDate();
+        LocalDate dob = panel.getDob().getDate();
         KaryawanModel model = new KaryawanModel();
         model.setEmploye_id(Integer.valueOf(panel.getIdTxt().getText()));
         model.setEmploye_name(panel.getEmployeName().getText());

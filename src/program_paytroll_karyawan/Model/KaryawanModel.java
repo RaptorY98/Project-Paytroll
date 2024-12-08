@@ -7,6 +7,7 @@ package program_paytroll_karyawan.Model;
 
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -16,7 +17,7 @@ import java.util.Date;
 public class KaryawanModel {
     private int employe_id;
     private String employe_name;
-    private Date date_of_birth;
+    private LocalDate date_of_birth;
     private String nik;
     private String username;
     private String password;
@@ -48,11 +49,11 @@ public class KaryawanModel {
         this.employe_name = employe_name;
     }
 
-    public Date getDate_of_birth() {
+    public LocalDate getDate_of_birth() {
         return date_of_birth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
+    public void setDate_of_birth(LocalDate date_of_birth) {
         this.date_of_birth = date_of_birth;
     }
 

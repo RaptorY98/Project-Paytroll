@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -42,7 +43,7 @@ public class KaryawanDAO implements ImplementKaryawan{
                     + "INSERT INTO employe (employe_id, employe_name, date_of_birth, nik, username, password, location_id, departement_id, division_id,role,salary,is_active,created_by) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             
             statement.setString(1, model.getEmploye_name());
-            statement.setString(2, sdf.format(model.getDate_of_birth()));
+            statement.setString(2, model.getDate_of_birth().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             statement.setString(3, model.getNik());
             statement.setString(4, model.getUsername());
             statement.setString(5, model.getPassword());
@@ -69,7 +70,7 @@ public class KaryawanDAO implements ImplementKaryawan{
             PreparedStatement statement = DbConnection.getConnection().prepareStatement("UPDATE employe SET employe_name=?, date_of_birth=?, nik=?, username=?, location_id=?, departement_id=?, division_id=?, role=?, salary=?, is_active=? WHERE employe_id=? ");
             
             statement.setString(1, model.getEmploye_name());
-            statement.setString(2, sdf.format(model.getDate_of_birth()));
+            statement.setString(2, model.getDate_of_birth().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             statement.setString(3, model.getNik());
             statement.setString(4, model.getUsername());
             statement.setInt(5, model.getLocation_id());
@@ -132,7 +133,7 @@ public class KaryawanDAO implements ImplementKaryawan{
                 model.setDivision(modelDivision);
                 model.setEmploye_id(result.getInt("employe_id"));
                 model.setEmploye_name(result.getString("employe_name"));
-                model.setDate_of_birth(result.getDate("date_of_birth"));
+                model.setDate_of_birth(result.getDate("date_of_birth").toLocalDate());
                 model.setNik(result.getString("nik"));
                 model.setUsername(result.getString("username"));
                 model.setLocation_id(result.getInt("location_id"));
@@ -174,7 +175,7 @@ public class KaryawanDAO implements ImplementKaryawan{
                 model.setDivision(modelDivision);
                 model.setEmploye_id(result.getInt("employe_id"));
                 model.setEmploye_name(result.getString("employe_name"));
-                model.setDate_of_birth(result.getDate("date_of_birth"));
+                model.setDate_of_birth(result.getDate("date_of_birth").toLocalDate());
                 model.setNik(result.getString("nik"));
                 model.setUsername(result.getString("username"));
                 model.setLocation_id(result.getInt("location_id"));
@@ -215,7 +216,7 @@ public class KaryawanDAO implements ImplementKaryawan{
                 model.setDivision(modelDivision);
                 model.setEmploye_id(result.getInt("employe_id"));
                 model.setEmploye_name(result.getString("employe_name"));
-                model.setDate_of_birth(result.getDate("date_of_birth"));
+                model.setDate_of_birth(result.getDate("date_of_birth").toLocalDate());
                 model.setNik(result.getString("nik"));
                 model.setUsername(result.getString("username"));
                 model.setLocation_id(result.getInt("location_id"));
