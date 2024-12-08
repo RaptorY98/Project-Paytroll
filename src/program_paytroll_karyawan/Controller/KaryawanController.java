@@ -74,6 +74,9 @@ public class KaryawanController {
         panel.getLocationCombo().getModel().setSelectedItem(new ComboBoxModel("",""));
         panel.getDepartementCombo().getModel().setSelectedItem(new ComboBoxModel("",""));
         panel.getDepartementCombo().getModel().setSelectedItem(new ComboBoxModel("", ""));
+        panel.getHead().setText("Master Data > Karyawan > Save");
+        panel.getButtonEdit().setVisible(false);
+        panel.getButtonSave().setVisible(true);
         this.getDepartement();
         this.getDivision();
     }   
@@ -313,6 +316,7 @@ public class KaryawanController {
         
         panel.getDivisionCombo().getModel().setSelectedItem(new ComboBoxModel(list.getDivision().getName(), String.valueOf(list.getDivision().getDivision_id())));
         panel.moveToForm();
+        panel.getHead().setText("Master Data > Karyawan > Update");
         panel.getButtonEdit().setVisible(true);
         panel.getButtonSave().setVisible(false);
         

@@ -7,6 +7,7 @@ package program_paytroll_karyawan.View;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -81,6 +82,10 @@ public class DivisionForm extends javax.swing.JPanel {
     public JButton getButtonSave(){
         return saveButton;
     }
+    
+    public JLabel getHead(){
+        return headForm;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,6 +119,7 @@ public class DivisionForm extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         nameTxt = new javax.swing.JTextField();
         DepartementComboBox = new javax.swing.JComboBox<>();
+        headForm = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
@@ -269,7 +275,7 @@ public class DivisionForm extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(DepartementComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(idTxt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(editButton)
@@ -308,8 +314,12 @@ public class DivisionForm extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
                     .addComponent(editButton))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
+
+        headForm.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        headForm.setForeground(new java.awt.Color(102, 102, 102));
+        headForm.setText("Master Data > Division > Update");
 
         javax.swing.GroupLayout formPanelLayout = new javax.swing.GroupLayout(formPanel);
         formPanel.setLayout(formPanelLayout);
@@ -323,7 +333,8 @@ public class DivisionForm extends javax.swing.JPanel {
                         .addComponent(backNavButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
-                        .addGap(0, 545, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(headForm)))
                 .addContainerGap())
         );
         formPanelLayout.setVerticalGroup(
@@ -331,7 +342,9 @@ public class DivisionForm extends javax.swing.JPanel {
             .addGroup(formPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(headForm))
                     .addComponent(backNavButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -364,7 +377,7 @@ public class DivisionForm extends javax.swing.JPanel {
 
         this.moveToForm();
         editButton.setVisible(false);
-//        controller.reset();
+        controller.reset();
     }//GEN-LAST:event_addNavButtonActionPerformed
 
     private void dataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableMouseClicked
@@ -386,6 +399,7 @@ public class DivisionForm extends javax.swing.JPanel {
     private javax.swing.JTable dataTable;
     private javax.swing.JButton editButton;
     private javax.swing.JPanel formPanel;
+    private javax.swing.JLabel headForm;
     private javax.swing.JLabel idDisplay;
     private javax.swing.JTextField idTxt;
     private javax.swing.JButton jButton1;

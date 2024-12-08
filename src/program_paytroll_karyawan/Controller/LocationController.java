@@ -22,34 +22,36 @@ import program_paytroll_karyawan.View.Form_Login;
 import program_paytroll_karyawan.View.LocationForm;
 
 import program_paytroll_karyawan.Table.ButtonColumn;
+
 /**
  *
  * @author lincbp
-  */
- public class LocationController {
+ */
+public class LocationController {
+
     private final LocationForm panel;
     private List<LocationModel> list;
     private final ImplementLocation implementLocation;
-    
+
     public LocationController(LocationForm panel) {
         this.panel = panel;
         implementLocation = new LocationDAO();
         list = implementLocation.getAllLocation();
 
     }
-    
-    public void isiTable(){
+
+    public void isiTable() {
         list = implementLocation.getAllLocation();
-        
+
         panel.getTabelLocation().setModel(new TableLocation(list));
-        
+
         ButtonColumn buttonColumn1 = new ButtonColumn(panel.getTabelLocation(), null, 10);
         ButtonColumn buttonColumn2 = new ButtonColumn(panel.getTabelLocation(), null, 9);
         buttonColumn1.setMnemonic(KeyEvent.VK_D);
         buttonColumn2.setMnemonic(KeyEvent.VK_E);
     }
-    
-    public void reset(){
+
+    public void reset() {
         panel.getNameTxt().setText("");
         panel.getDistrictTxt().setText("");
         panel.getProvinceTxt().setText("");
@@ -59,10 +61,14 @@ import program_paytroll_karyawan.Table.ButtonColumn;
         panel.getAddress1Txt().setText("");
         panel.getAddress2Txt().setText("");
         panel.getLocationIdTxt().setText("");
+        panel.getHeadLabel().setText("Master Data > Location > Save");
+        panel.getButtonSave().setVisible(true);
+        panel.getButtonEdit().setVisible(false);
     }
-    public void insert(){
+
+    public void insert() {
         LocationModel model = new LocationModel();
-        
+
         model.setProvince(panel.getProvinceTxt().getText());
         model.setName(panel.getNameTxt().getText());
         model.setAddress_1(panel.getAddress1Txt().getText());
@@ -72,41 +78,39 @@ import program_paytroll_karyawan.Table.ButtonColumn;
         model.setSub_district(panel.getSubDistrictTxt().getText());
         model.setZip_code(panel.getZipCodeTxt().getText());
         String res = this.validate(model);
-        if(res.equals("Success")){
+        if (res.equals("Success")) {
             implementLocation.input(model);
-            JOptionPane.showMessageDialog(null,"Data Berhasil Ditambah");
+            JOptionPane.showMessageDialog(null, "Data Berhasil Ditambah");
             this.reset();
             this.isiTable();
             panel.moveToTable();
-        }else{
-            JOptionPane.showMessageDialog(null,res);
+        } else {
+            JOptionPane.showMessageDialog(null, res);
         }
-        
-        
+
     }
-    
-    public void selectedRow(){
+
+    public void selectedRow() {
         int row = panel.getTabelLocation().getSelectedRow();
-        
-        if (row != -1){
+
+        if (row != -1) {
             int id = Integer.valueOf(list.get(row).getLocation_id());
             int col = panel.getTabelLocation().getSelectedColumn();
-            
-            if(col == 9){
+
+            if (col == 9) {
                 this.detail(list.get(row));
             }
-            
-            if(col == 10){
+
+            if (col == 10) {
                 this.delete(id);
             }
-            
-            
-            System.out.println("Table Selected Row :"+row+" Col :"+col+" Id :"+id);
-            
-        }   
+
+            System.out.println("Table Selected Row :" + row + " Col :" + col + " Id :" + id);
+
+        }
     }
-    
-    public void detail(LocationModel list){
+
+    public void detail(LocationModel list) {
         panel.getNameTxt().setText(list.getName());
         panel.getDistrictTxt().setText(list.getDistrict());
         panel.getProvinceTxt().setText(list.getProvince());
@@ -119,21 +123,23 @@ import program_paytroll_karyawan.Table.ButtonColumn;
         panel.moveToForm();
         panel.getButtonEdit().setVisible(true);
         panel.getButtonSave().setVisible(false);
-    }
-    
-    public void delete(Integer id){
-        int res = JOptionPane.showConfirmDialog(null, "Yakin pengen di hapus ?","Warning",JOptionPane.YES_NO_OPTION);
+        panel.getHeadLabel().setText("Master Data > Location > Update");
         
-        if(res == JOptionPane.YES_OPTION){
+    }
+
+    public void delete(Integer id) {
+        int res = JOptionPane.showConfirmDialog(null, "Yakin pengen di hapus ?", "Warning", JOptionPane.YES_NO_OPTION);
+
+        if (res == JOptionPane.YES_OPTION) {
             implementLocation.delete(id);
-            JOptionPane.showMessageDialog(null,"Data Berhasil Dihapus");
+            JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
             this.isiTable();
         }
     }
-    
-    public void edit(){
+
+    public void edit() {
         LocationModel model = new LocationModel();
-        
+
         model.setProvince(panel.getProvinceTxt().getText());
         model.setName(panel.getNameTxt().getText());
         model.setAddress_1(panel.getAddress1Txt().getText());
@@ -143,78 +149,79 @@ import program_paytroll_karyawan.Table.ButtonColumn;
         model.setSub_district(panel.getSubDistrictTxt().getText());
         model.setZip_code(panel.getZipCodeTxt().getText());
         model.setLocation_id(Integer.valueOf(panel.getLocationIdTxt().getText()));
-        
+
         String res = this.validate(model);
-        if(res.equals("Success")){
+        if (res.equals("Success")) {
             implementLocation.update(model);
-            JOptionPane.showMessageDialog(null,"Data Berhasil Diubah");
+            JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
             this.reset();
             this.isiTable();
             panel.moveToTable();
-        }else{
-            JOptionPane.showMessageDialog(null,res);
+        } else {
+            JOptionPane.showMessageDialog(null, res);
         }
     }
-    
-    public void getData(){
-        if (panel.getSearchTxt().getText().trim().isEmpty()){
+
+    public void getData() {
+        if (panel.getSearchTxt().getText().trim().isEmpty()) {
             this.isiTable();
             return;
         }
         String nama = panel.getSearchTxt().getText();
-        
+
         list = implementLocation.getLocation(nama);
         panel.getTabelLocation().setModel(new TableLocation(list));
-        
+
         ButtonColumn buttonColumn1 = new ButtonColumn(panel.getTabelLocation(), null, 10);
         ButtonColumn buttonColumn2 = new ButtonColumn(panel.getTabelLocation(), null, 9);
         buttonColumn1.setMnemonic(KeyEvent.VK_D);
         buttonColumn2.setMnemonic(KeyEvent.VK_E);
     }
-    public String validate(LocationModel model){
+
+    public String validate(LocationModel model) {
         String res = "Success";
-        if(this.isNullOrEmpty(model.getName())){
+        if (this.isNullOrEmpty(model.getName())) {
             return this.validateMessage(1, "Nama");
         }
-        
-        if(this.isNullOrEmpty(model.getProvince())){
+
+        if (this.isNullOrEmpty(model.getProvince())) {
             return this.validateMessage(1, "Province");
         }
-         
-        if(this.isNullOrEmpty(model.getCity())){
+
+        if (this.isNullOrEmpty(model.getCity())) {
             return this.validateMessage(1, "City");
         }
-        
-        if(this.isNullOrEmpty(model.getDistrict())){
+
+        if (this.isNullOrEmpty(model.getDistrict())) {
             return this.validateMessage(1, "District");
         }
-        
-        if(this.isNullOrEmpty(model.getSub_district())){
+
+        if (this.isNullOrEmpty(model.getSub_district())) {
             return this.validateMessage(1, "Sub District");
         }
-        
-        if(this.isNullOrEmpty(model.getZip_code())){
+
+        if (this.isNullOrEmpty(model.getZip_code())) {
             return this.validateMessage(1, "Zip Code");
         }
-        
-        if(this.isNullOrEmpty(model.getAddress_1())){
+
+        if (this.isNullOrEmpty(model.getAddress_1())) {
             return this.validateMessage(1, "Address 1");
         }
         return res;
     }
-    
-    public String validateMessage(int seq,String text){
-        if(seq == 1){
-            return "Field "+text+" Wajib Diisi";
-        }else{
+
+    public String validateMessage(int seq, String text) {
+        if (seq == 1) {
+            return "Field " + text + " Wajib Diisi";
+        } else {
             return text;
         }
     }
-    
-    public boolean isNullOrEmpty(String text){
-        if(text.equals("") || text == null){
+
+    public boolean isNullOrEmpty(String text) {
+        if (text.equals("") || text == null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

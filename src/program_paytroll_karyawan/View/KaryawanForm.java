@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -106,6 +107,10 @@ public class KaryawanForm extends javax.swing.JPanel {
     }
     public JButton getButtonSave(){
         return saveButton;
+    }
+    
+    public JLabel getHead(){
+        return jLabel5;
     }
     
     public void moveToForm(){
@@ -560,7 +565,7 @@ public class KaryawanForm extends javax.swing.JPanel {
         this.moveToForm();
         usernameTxt.setEditable(true);
         editButton.setVisible(false);
-//        controller.reset();
+        controller.reset();
     }//GEN-LAST:event_addNavButtonActionPerformed
 
     private void dataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableMouseClicked

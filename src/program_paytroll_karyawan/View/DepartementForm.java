@@ -32,9 +32,14 @@ public class DepartementForm extends javax.swing.JPanel {
         this.idTxt.setVisible(false);
         this.idDisplay.setVisible(false);
     }
+    public JLabel getHead(){
+        return jLabel2;
+    }
+    
     public JButton getButtonEdit(){
         return editButton;
     }
+    
     
     public JButton getButtonSave(){
         return saveButton;

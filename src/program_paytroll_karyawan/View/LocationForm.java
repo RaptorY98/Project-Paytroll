@@ -27,9 +27,11 @@ public class LocationForm extends javax.swing.JPanel {
         controller = new LocationController(this);
         controller.isiTable();
         this.moveToTable();
-        
         this.locationIdTxt.setVisible(false);
         this.locationIdDisplay.setVisible(false);
+    }
+    public JLabel getHeadLabel(){
+        return jLabel2;
     }
     public JButton getButtonEdit(){
         return editButton;

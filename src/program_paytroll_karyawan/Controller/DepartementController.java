@@ -65,6 +65,9 @@ public class DepartementController {
     public void reset(){
         panel.getNameTxt().setText("");
         panel.getNotesTxt().setText("");
+        panel.getHead().setText("MasterData > Departement > Save");
+        panel.getButtonEdit().setVisible(false);
+        panel.getButtonSave().setVisible(true);
         
     }
     
@@ -151,6 +154,7 @@ public class DepartementController {
         panel.getIdTxt().setText(String.valueOf(list.getDepartement_id()));
         panel.getLocationComboBox().getModel().setSelectedItem(new ComboBoxModel(list.getLocation().getName(),String.valueOf(list.getLocation().getLocation_id())));
         
+        panel.getHead().setText("MasterData > Departement > Update");
         panel.moveToForm();
         panel.getButtonEdit().setVisible(true);
         panel.getButtonSave().setVisible(false);

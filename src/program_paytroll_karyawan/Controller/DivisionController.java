@@ -74,6 +74,7 @@ public class DivisionController {
         panel.getComboBox().getModel().setSelectedItem(new ComboBoxModel(row.getDepartement().getLocation().getName()+" : "+row.getName(),String.valueOf(row.getDepartement_id())));
         
         panel.moveToForm();
+        panel.getHead().setText("Master Data > Division > Update");
         panel.getButtonEdit().setVisible(true);
         panel.getButtonSave().setVisible(false);
     }
@@ -95,6 +96,9 @@ public class DivisionController {
     public void reset(){
         panel.getNameTxt().setText("");
         panel.getNotesTxt().setText("");
+        panel.getHead().setText("Master Data > Division > Save");
+        panel.getButtonEdit().setVisible(false);
+        panel.getButtonSave().setVisible(true);
     }
     
     public void getData(){
