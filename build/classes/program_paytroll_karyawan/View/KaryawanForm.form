@@ -259,7 +259,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="dateOfBirthTxt" max="32767" attributes="0"/>
+                                  <Component id="dateOfBirthTxt" pref="348" max="32767" attributes="0"/>
                                   <Component id="employeNameTxt" alignment="0" max="32767" attributes="0"/>
                                   <Component id="idTxt" alignment="1" max="32767" attributes="0"/>
                                   <Component id="nikTxt" alignment="0" max="32767" attributes="0"/>
@@ -274,7 +274,7 @@
                                           <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="250" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -294,8 +294,8 @@
                               <Component id="employeNameTxt" min="-2" pref="35" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="dateOfBirthTxt" min="-2" pref="27" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="dateOfBirthTxt" min="-2" pref="33" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -402,7 +402,7 @@
                     </Component>
                     <Component class="javax.swing.JPasswordField" name="passwordTxt">
                     </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="dateOfBirthTxt">
+                    <Component class="com.github.lgooddatepicker.components.DatePicker" name="dateOfBirthTxt">
                     </Component>
                   </SubComponents>
                 </Container>

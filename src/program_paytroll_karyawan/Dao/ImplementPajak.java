@@ -6,24 +6,23 @@
 package program_paytroll_karyawan.Dao;
 
 import java.util.List;
-import program_paytroll_karyawan.Model.DivisionModel;
+import program_paytroll_karyawan.Model.PajakModel;
 
 /**
  *
  * @author lincbp
  */
 public interface ImplementPajak {
-    public void input(DivisionModel model);
+    public void input(PajakModel model);
     
-    public void update(DivisionModel model);
+    public void update(PajakModel model);
     
     public void delete(int id);
     
-    public List<DivisionModel> getData(String search);
+    public List<PajakModel> getData(String search);
     
-    public List<DivisionModel> getAllData();
+    public List<PajakModel> getAllData();
     
-    public DivisionModel getDetail(int id);
+    public PajakModel getDetail(int id);
     
-    public List<DivisionModel> getDataByDepartementId(int id);
 }

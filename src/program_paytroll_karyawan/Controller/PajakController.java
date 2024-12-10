@@ -10,16 +10,14 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import program_paytroll_karyawan.Dao.DepartementDAO;
-import program_paytroll_karyawan.Dao.DivisionDAO;
-import program_paytroll_karyawan.Dao.ImplementDivision;
+import program_paytroll_karyawan.Dao.PajakDAO;
+import program_paytroll_karyawan.Dao.ImplementPajak;
 import program_paytroll_karyawan.Model.ComboBoxModel;
-import program_paytroll_karyawan.Model.DepartementModel;
 import program_paytroll_karyawan.Model.DivisionModel;
 import program_paytroll_karyawan.Model.PajakModel;
 import program_paytroll_karyawan.Table.ButtonColumn;
 import program_paytroll_karyawan.Table.TableDivision;
-import program_paytroll_karyawan.View.DivisionForm;
+import program_paytroll_karyawan.Table.TablePajak;
 import program_paytroll_karyawan.View.PajakForm;
 
 /**
@@ -29,37 +27,25 @@ import program_paytroll_karyawan.View.PajakForm;
 public class PajakController {
     private final PajakForm panel;
     private List<PajakModel> list;
-    private final ImplementDivision dao;
+    private final ImplementPajak dao;
 
     public PajakController(PajakForm panel) {
         this.panel = panel;
-        dao = new DivisionDAO();
+        dao = new PajakDAO();
         list = dao.getAllData();
-    }
-     public void initDepartementValue(){
-        DepartementDAO departementController = new DepartementDAO();
-        DefaultComboBoxModel comboModel = new DefaultComboBoxModel();
-        comboModel.removeAllElements();
-        listExt = departementController.getAllData();
-        
-        for(DepartementModel item : listExt){
-            comboModel.addElement(new ComboBoxModel(item.getLocation().getName()+" : "+item.getName(),String.valueOf(item.getDepartement_id())));
-        }
-        panel.getComboBox().setModel(comboModel);
-        
     }
     public void selectedRow(){
         int row = panel.getTable().getSelectedRow();
         
         if (row != -1){
-            int id = Integer.valueOf(list.get(row).getDivision_id());
+            int id = Integer.valueOf(list.get(row).getPajak_id());
             int col = panel.getTable().getSelectedColumn();
             
-            if(col == 5){
+            if(col == 4){
                 this.detail(list.get(row));
             }
             
-            if(col == 6){
+            if(col == 5){
                 this.delete(id);
             }
             
@@ -68,14 +54,14 @@ public class PajakController {
             
         }  
     }
-    public void detail(DivisionModel row){
+    public void detail(PajakModel row){
+        panel.getIdTxt().setText(String.valueOf(row.getPajak_id()));
         panel.getNameTxt().setText(row.getName());
-        panel.getNotesTxt().setText(row.getNotes());
-        panel.getIdTxt().setText(String.valueOf(row.getDivision_id()));
-        panel.getComboBox().getModel().setSelectedItem(new ComboBoxModel(row.getDepartement().getLocation().getName()+" : "+row.getName(),String.valueOf(row.getDepartement_id())));
-        
+        panel.getNotesTxt().setText(row.getDescription());
+        panel.getPercentageTxt().setText(String.valueOf(row.getPercentage()));
+
         panel.moveToForm();
-        panel.getHead().setText("Master Data > Division > Update");
+        panel.getHead().setText("Master Data > Pajak > Update");
         panel.getButtonEdit().setVisible(true);
         panel.getButtonSave().setVisible(false);
     }
@@ -97,7 +83,8 @@ public class PajakController {
     public void reset(){
         panel.getNameTxt().setText("");
         panel.getNotesTxt().setText("");
-        panel.getHead().setText("Master Data > Division > Save");
+        panel.getPercentageTxt().setText("");
+        panel.getHead().setText("Master Data > Pajak > Save");
         panel.getButtonEdit().setVisible(false);
         panel.getButtonSave().setVisible(true);
     }
@@ -114,20 +101,25 @@ public class PajakController {
         this.applyTable(list);
     }
     
-    public void applyTable(List<DivisionModel> list){
-        panel.getTable().setModel(new TableDivision(list));
+    public void applyTable(List<PajakModel> list){
+        panel.getTable().setModel(new TablePajak(list));
         
-        ButtonColumn buttonColumn1 = new ButtonColumn(panel.getTable(), null, 5);
-        ButtonColumn buttonColumn2 = new ButtonColumn(panel.getTable(), null, 6);
+        ButtonColumn buttonColumn1 = new ButtonColumn(panel.getTable(), null, 4);
+        ButtonColumn buttonColumn2 = new ButtonColumn(panel.getTable(), null, 5);
         buttonColumn1.setMnemonic(KeyEvent.VK_D);
         buttonColumn2.setMnemonic(KeyEvent.VK_E);
     }
     
     public void insert(){
-        DivisionModel model = new DivisionModel();
+        PajakModel model = new PajakModel();
         model.setName(panel.getNameTxt().getText());
-        model.setNotes(panel.getNotesTxt().getText());
-        model.setDepartement_id(this.getSelectedId(panel.getComboBox()));
+        model.setDescription(panel.getNotesTxt().getText());
+        if(panel.getPercentageTxt().getText().equals("")){
+            model.setPercentage(-1);
+        }else{
+            model.setPercentage(Double.valueOf(panel.getPercentageTxt().getText()));    
+        }
+        
         String res = this.validate(model);
         if(res.equals("Success")){
             dao.input(model);
@@ -141,11 +133,15 @@ public class PajakController {
     }
     
     public void edit(){
-        DivisionModel model = new DivisionModel();
+        PajakModel model = new PajakModel();
+        model.setPajak_id(Integer.valueOf(panel.getIdTxt().getText()));
         model.setName(panel.getNameTxt().getText());
-        model.setNotes(panel.getNotesTxt().getText());
-        model.setDepartement_id(this.getSelectedId(panel.getComboBox()));
-        model.setDivision_id(Integer.valueOf(panel.getIdTxt().getText()));
+        model.setDescription(panel.getNotesTxt().getText());
+        if(panel.getPercentageTxt().getText().equals("")){
+            model.setPercentage(-1);
+        }else{
+            model.setPercentage(Double.valueOf(panel.getPercentageTxt().getText()));    
+        }
         String res = this.validate(model);
         if(res.equals("Success")){
             dao.update(model);
@@ -164,14 +160,19 @@ public class PajakController {
         return id;
     }
     
-    public String validate(DivisionModel model){
+    public String validate(PajakModel model){
         String res = "Success";
         if(this.isNullOrEmpty(model.getName())){
             return this.validateMessage(1, "Nama");
         }
-        if(this.isNullOrEmpty(model.getNotes())){
-            return this.validateMessage(1, "Notes");
+        if(this.isNullOrEmpty(model.getDescription())){
+            return this.validateMessage(1, "Description");
         }
+        System.out.println(model.getPercentage());
+        if(model.getPercentage() < 0){
+            return this.validateMessage(1, "Percentage");
+        }
+        
         return res;
     }
      public String validateMessage(int seq,String text){

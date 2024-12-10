@@ -211,6 +211,7 @@ public class MainMenu2 extends javax.swing.JFrame {
         ImageIcon iconLembur = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/back-in-time.png"));
         ImageIcon iconReimburse = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/money.png"));
         ImageIcon iconReport = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/icons8-reports-32.png"));
+        ImageIcon iconTax = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/icons8-tax-32.png"));
 
         MenuItem menuHome = new MenuItem(iconHome, false, null, "Home", new ActionListener() {
             @Override
@@ -270,6 +271,16 @@ public class MainMenu2 extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 main.removeAll();
                 main.add(new PeriodeForm(loginModel));
+                main.repaint();
+                main.revalidate();
+            }
+        });
+        MenuItem menuTax = new MenuItem(null, true, iconTax, "Pajak", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Pajak");    
+                main.removeAll();
+                main.add(new PajakForm(loginModel));
                 main.repaint();
                 main.revalidate();
             }
@@ -338,7 +349,7 @@ public class MainMenu2 extends javax.swing.JFrame {
             }
         });
 
-        MenuItem menuMaster = new MenuItem(iconMaster, false, null, "Master", null, menuLocation, menuDepartement, menuDivison, menuKaryawan, menuPeriode);
+        MenuItem menuMaster = new MenuItem(iconMaster, false, null, "Master", null, menuLocation, menuDepartement, menuDivison, menuKaryawan, menuPeriode,menuTax);
 
         MenuItem menuTransaksi = new MenuItem(iconTransaksi, false, null, "Transaksi", null, menuAbsensi, menuLembur, menuReimburse);
         MenuItem menuLaporan = new MenuItem(iconReport, false, null, "Report", null, menuLaporanAbsen,menuLaporanLembur,menuLaporanKaryawan,menuLaporanGajiKaryawan);
