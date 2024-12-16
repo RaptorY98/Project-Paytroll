@@ -211,7 +211,11 @@ public class MainMenu2 extends javax.swing.JFrame {
         ImageIcon iconLembur = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/back-in-time.png"));
         ImageIcon iconReimburse = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/money.png"));
         ImageIcon iconReport = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/icons8-reports-32.png"));
-        ImageIcon iconTax = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/icons8-tax-32.png"));
+        ImageIcon iconTax = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/icons8-tax-32.png")); 
+        ImageIcon iconInsurance = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/icons8-insurance-32.png")); 
+        ImageIcon iconInsuranceEmploye = new ImageIcon(getClass().getResource("/program_paytroll_karyawan/Assets/Icons/icons8-medical-insurance-32.png")); 
+        
+        
 
         MenuItem menuHome = new MenuItem(iconHome, false, null, "Home", new ActionListener() {
             @Override
@@ -348,8 +352,30 @@ public class MainMenu2 extends javax.swing.JFrame {
                 main.revalidate();
             }
         });
+        MenuItem menuInsurance = new MenuItem(null, false, iconInsurance, "Asuransi", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                main.removeAll();
+                main.add(new InsuranceForm(loginModel));
+                main.repaint();
+                main.revalidate();
+            }
+        });
+        MenuItem menuInsuranceEmploye = new MenuItem(null, false, iconInsuranceEmploye, "Asuransi Karyawan", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                main.removeAll();
+                main.add(new EmployeInsuranceForm(loginModel));
+                main.repaint();
+                main.revalidate();
+            }
+        });
+        
+        
+        
+        
 
-        MenuItem menuMaster = new MenuItem(iconMaster, false, null, "Master", null, menuLocation, menuDepartement, menuDivison, menuKaryawan, menuPeriode,menuTax);
+        MenuItem menuMaster = new MenuItem(iconMaster, false, null, "Master", null, menuLocation, menuDepartement, menuDivison, menuKaryawan, menuPeriode,menuTax,menuInsurance, menuInsuranceEmploye);
 
         MenuItem menuTransaksi = new MenuItem(iconTransaksi, false, null, "Transaksi", null, menuAbsensi, menuLembur, menuReimburse);
         MenuItem menuLaporan = new MenuItem(iconReport, false, null, "Report", null, menuLaporanAbsen,menuLaporanLembur,menuLaporanKaryawan,menuLaporanGajiKaryawan);
